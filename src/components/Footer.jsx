@@ -3,7 +3,7 @@ import React from "react";
 import pic from "../assets/logo_footer.png";
 import img from "../assets/10001.png";
 import { Link } from "react-router-dom";
-const footer = () => {
+const Footer = () => {
   return (
     <div className="bg-gray-700 flex-col  flex  bg-footer md:flex-row md:space-x-8 p-10 items-center md:justify-evenly mx-auto">
       <div className="flex space-y-8 flex-col md:items-start items-center  ">
@@ -52,4 +52,4 @@ const footer = () => {
   );
 };
 
-export default footer;
+export default Footer;
