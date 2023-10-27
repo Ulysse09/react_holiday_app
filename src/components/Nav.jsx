@@ -55,10 +55,12 @@ function Nav() {
         </div>
       </div>
       {/* white navbar */}
-      <div className="flex justify-between  p-4 m  transform md:translate-y-[-2.5rem] sticky     bg-white container mx-auto  ">
-        <img src={pic} alt="" />
+      <div className="flex justify-between  items-center  p-4 m  transform md:translate-y-[-2.5rem] sticky     bg-white container mx-auto  ">
+        <div className="w-1/2">
+          <img src={pic} alt="" className="" />
+        </div>
 
-        <div className="space-x-6 flex items-center">
+        <div className="md:space-x-6 flex items-center">
           <button className="px-10 py-3 hidden md:flex bg-secondary text-white rounded-lg font-semibold">
             Reserve
           </button>
@@ -75,7 +77,7 @@ function Nav() {
       </div>
 
       {openModal && (
-        <div className="bg-primary  w-full h-full fixed top-0  left-0 z-10 pr-14 space-y-20 flex items-center  mx-auto justify-between ">
+        <div className="bg-primary animation  w-full h-full fixed top-0   left-0 z-10 pr-14 space-y-20 flex items-center  mx-auto justify-between ">
           <div className="space-y-14">
             <p className="text-white font-semibold"></p>
             <div className="text-white flex flex-col space-y-4  font-body font-semibold text-3xl bg-nav mr-14  px-44 pr-[24rem] items-start py-8 rounded-lg">

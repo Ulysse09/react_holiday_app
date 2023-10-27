@@ -9,7 +9,7 @@ const TourList = () => {
     const { title, description, price, image } = tour;
 
     return (
-      <div className="flex flex-col items-start w-1/3    py-8   ">
+      <div className="flex flex-col items-start md:w-1/3    py-8   ">
         <div className="  ">
           <img
             className="bg-cover  w-[44rem] h-[20rem]    "
@@ -80,7 +80,7 @@ const TourList = () => {
     ];
     return (
       <>
-        <div className=" py-8 px-8">
+        <div className=" md:py-8 md:px-8">
           <div className=" flex flex-wrap space-x-4 justify-evenly  p-0     ">
             {tours.map((tour) => (
               <TourCard key={tour.id} tour={tour} />
@@ -93,29 +93,29 @@ const TourList = () => {
 
   return (
     <>
-      <div className="  text-center mb-12 px-8 py-52 md:p-40">
+      <div className="  text-center mb-24 md:px-8 py-52 md:p-40">
         <div className="bg-image1" />
         <p className="font-bold font-body md:text-7xl text-4xl py-2 px-2 text-white container mx-auto ">
           Tour list
         </p>
       </div>
 
-      <div className="container flex-row flex mx-auto items-center relative">
-        <div className="w-2/3 flex justify-evenly flex-col items-center mt-24  ">
+      <div className="container md:flex-row flex-col flex mx-auto items-center relative">
+        <div className="md:w-2/3 flex justify-evenly flex-col items-center mt-24  ">
           <div className="mt-28">
-            <form action="" className="flex ">
-              <div className=" border rounded-l-lg mr-0 py-2 px-28  border-black">
+            <form action="" className="flex flex-col  space-y-4 md:flex-row  ">
+              <div className=" border md:rounded-l-lg mr-0 py-2 px-20 md:px-28  border-black">
                 <label htmlFor="" className="font-bold text-center">
                   Sort by:
                 </label>
               </div>
-              <div className=" border border-l-0  ml-0 py-2 px-4 border-black">
+              <div className=" border md:border-l-0  ml-0 py-2 px-20 border-black">
                 <label htmlFor=""></label>
-                <select name="" id="">
+                <select name="" id="" className="flex justify-center">
                   <option value="">Release date</option>
                 </select>
               </div>
-              <div className=" border rounded-r-lg border-l-0  py-2 px-28 border-black">
+              <div className=" border md:rounded-r-lg md:border-l-0 px-20  py-2 md:px-28 border-black">
                 <select name="" id="">
                   <option value="">Descending</option>
                   <option value="">Ascending</option>
@@ -125,7 +125,7 @@ const TourList = () => {
           </div>
           <TourListMain />
         </div>
-        <div className="w-1/3 flex-col flex space-y-6 mb-10 mt-24">
+        <div className="md:w-1/3 flex-col flex space-y-6 mb-10 mt-24">
           <div className="flex flex-col p-4 shadow-xl transform translate-y-[-1.5rem]  bg-white  ">
             <h2 className="font-semibold text-2xl flex justify-center">
               Find your tour
@@ -134,7 +134,7 @@ const TourList = () => {
               action="/"
               method="get"
               id="form"
-              class="flex flex-col space-y-4 p-8 "
+              class="flex flex-col space-y-4 md:p-8 "
             >
               <div className="flex flex-col space-y-8 justify-center   container ">
                 <div className="flex flex-col">
@@ -172,7 +172,7 @@ const TourList = () => {
                     </label>
                     <input
                       type="text"
-                      className="w-1/2  border-black  border-2 rounded-lg px-14 py-4"
+                      className="w-1/2   border-black  border-2 rounded-lg px-14 py-4"
                     />
                   </div>
                   <div className="flex flex-col">
@@ -181,7 +181,7 @@ const TourList = () => {
                     </label>
                     <input
                       type="text"
-                      className="w-1/2 border-black  border-2 rounded-lg px-14 py-4"
+                      className="w-1/2  border-black  border-2 rounded-lg px-14 py-4"
                     />
                   </div>
                 </div>

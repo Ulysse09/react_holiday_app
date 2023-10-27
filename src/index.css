@@ -25,6 +25,7 @@
   right: 0;
   bottom: 0rem;
   z-index: -1;
+  height: 100vh;
 }
 
 .bg-image1 {
@@ -78,4 +79,34 @@
 
 table {
   padding: 30px; /* Add padding to the entire table */
+}
+
+.animation {
+  animation-name: modal;
+  animation-duration: 1s;
+}
+
+@keyframes modal {
+  0% {
+    left: 100%;
+  }
+
+  100% {
+    left: 0;
+  }
+}
+
+.animationDash {
+  animation-name: modalDash;
+  animation-duration: 1.5s;
+}
+
+@keyframes modalDash {
+  0% {
+    right: 100%;
+  }
+
+  100% {
+    right: 0%;
+  }
 }

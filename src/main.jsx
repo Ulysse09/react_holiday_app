@@ -18,6 +18,7 @@ import Dash from "./pages/Dash.jsx";
 import TourDash from "./pages/TourDash.jsx";
 import ContactDash from "./pages/ContactDash.jsx";
 import BookingsDash from "./pages/BookingsDash.jsx";
+import TourForm from "./pages/TourForm.jsx";
 
 const Layout = () => {
   return (
@@ -51,6 +52,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
           <Route path="tourDash" element={<TourDash />} />
           <Route path="contactDash" element={<ContactDash />} />
           <Route path="bookingsDash" element={<BookingsDash />} />
+          <Route path="tourForm" element={<TourForm />} />
         </Route>
       </Routes>
     </BrowserRouter>

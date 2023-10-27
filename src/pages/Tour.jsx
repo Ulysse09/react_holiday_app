@@ -9,7 +9,7 @@ const Tour = () => {
     const { title, description, price, image } = tour;
 
     return (
-      <div className="tour-card flex flex-col items-center py-8  ">
+      <div className="tour-card flex flex-col items-center px-2 py-8  ">
         <img
           className="bg-cover  w-[44rem] h-[20rem]  "
           src={image}
@@ -69,11 +69,11 @@ const Tour = () => {
     ];
     return (
       <>
-        <div className="container mx-auto px-8 ">
-          <h1 className="text-secondary text-6xl font-body px-20  font-bold container mx-auto mb-14">
+        <div className="container mx-auto md:px-8 ">
+          <h1 className="text-secondary text-6xl font-body md:px-20  font-bold container mx-auto mb-14">
             Trending tours
           </h1>
-          <div className="tour-list md:flex-row flex flex-col   space-x-10 justify-between p-14 ">
+          <div className="tour-list md:flex-row flex flex-col   md:space-x-10 justify-between md:p-14 ">
             {tours.map((tour) => (
               <TourCard key={tour.id} tour={tour} />
             ))}

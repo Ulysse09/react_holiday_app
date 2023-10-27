@@ -5,8 +5,8 @@ import img from "../assets/10001.png";
 import { Link } from "react-router-dom";
 const footer = () => {
   return (
-    <div className="bg-gray-700  bg-footer flex space-x-8 p-10 items-center justify-evenly mx-auto">
-      <div className="flex space-y-8 flex-col ">
+    <div className="bg-gray-700 flex-col  flex  bg-footer md:flex-row md:space-x-8 p-10 items-center md:justify-evenly mx-auto">
+      <div className="flex space-y-8 flex-col md:items-start items-center  ">
         <img src={pic} className="" alt="" srcset="" />
         <p className="max-w-md text-white">
           Holiday Planners sit amet consectetur adipisicing elit. Perferendis
@@ -24,9 +24,9 @@ const footer = () => {
         </div>
       </div>
       <div></div>
-      <div className=" flex flex-col space-y-6">
-        <p className="text-3xl font-bold text-white">Navigation</p>
-        <div className="text-white flex flex-col space-y-6">
+      <div className=" flex flex-col  space-y-6 items-center">
+        <p className="text-3xl font-bold text-white text-left">Navigation</p>
+        <div className="text-white flex flex-col  space-y-6">
           <Link to={"/"} className="hover:underline">
             Home
           </Link>
@@ -41,7 +41,8 @@ const footer = () => {
           </Link>
         </div>
       </div>
-      <div className="text-white flex-col space-y-6 ">
+      <div></div>
+      <div className="text-white flex-col  md:flex-row items-center space-y-6 ">
         <p>Need Help</p>
         <p>Call us </p>
         <p>Location</p>

@@ -7,14 +7,14 @@ const About = () => {
   return (
     <div className="flex flex-col  md:flex-row   mx-auto container justify-between md:items-center md:px-8 mb-44   ">
       <div className="space-y-6 flex flex-col items-start  md:w-1/2 mt-8">
-        <div className=" relative">
+        <div className=" relative ]">
           <img
-            className=" h-[30rem] w-[28rem] bg-cover  border-secondary border-[0.3rem] p-1 border-spacing-[10rem] bg-center z-[-10] "
+            className="md:h-[30rem] h-[15rem] md:w-[28rem] w-[20rem] bg-cover  border-secondary border-[0.3rem] p-1 border-spacing-[10rem] bg-center z-[-10] "
             src={air}
             alt=""
           />
           <img
-            className="h-[15rem] transform translate-x-36 w-[18rem] bg-cover bg-center border-secondary border-[0.3rem] p-1 border-spacing-[10rem]  absolute right-0 bottom-[-4.5rem]    "
+            className="md:h-[15rem] h-[10rem] transform translate-x-10 md:translate-x-36 w-[10rem] md:w-[18rem] bg-cover bg-center border-secondary border-[0.3rem] p-1 border-spacing-[10rem]  absolute right-0 bottom-[-4.5rem]    "
             src={air1}
             alt=""
           />

@@ -1,11 +1,16 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+// import Form from "../components/Form";
+import { useNavigate } from "react-router-dom";
 
 const Sign_up = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [passWord, setPassword] = useState("");
   const [email, setEmail] = useState("");
+
+  const navigate = useNavigate();
 
   // const [isLoading,setIsLoading] = useState(false)
 
@@ -14,7 +19,7 @@ const Sign_up = () => {
 
     axios({
       method: "POST",
-      url: "https://holiday-planner-4lnj.onrender.com/api/v1/auth/signup",
+      url: "https://holiday-api-zj3a.onrender.com/api/v1//auth/signup",
       data: {
         email: email,
         fullName: firstName + lastName,
@@ -23,11 +28,14 @@ const Sign_up = () => {
     })
       .then((response) => {
         console.log(response);
-        alert("Sign up succesfull");
+        localStorage.setItem("token", response.data.access_token);
+        toast.success("Success");
+        setTimeout(() => {
+          navigate("/login");
+        }, 3000);
       })
       .catch((error) => {
-        console.log(error);
-        alert("An error happened");
+        toast.error("Error");
       });
 
     setEmail("");
@@ -37,6 +45,7 @@ const Sign_up = () => {
   };
   return (
     <div className="container mx-auto">
+      <ToastContainer />
       <div className="">
         <form
           action="/"
@@ -49,7 +58,7 @@ const Sign_up = () => {
             Already have an account yet{" "}
             <span className="text-secondary">Login</span>
           </p>
-          <div className="flex flex-col space-y-4 justify-center  w-1/2 container ">
+          <div className="flex flex-col space-y-4 justify-center  md:w-1/2 container ">
             <div className="flex flex-col">
               <label htmlFor="" className="font-semibold">
                 Enter your email

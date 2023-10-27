@@ -21,7 +21,7 @@ import { AiFillStar } from "react-icons/ai";
 function App() {
   return (
     <>
-      <div className="   text-center mb-72 px-8 py-52 md:p-36">
+      <div className="   text-center md:mb-72 mb-[14rem] px-8 py-52 md:p-36">
         <div className="bg-image" />
         <p className="font-bold font-body min-w-xl md:text-7xl text-4xl py-2 px-2 text-white container mx-auto ">
           Enjoy the travel with
@@ -66,7 +66,7 @@ function App() {
             <img
               src={colon}
               alt=""
-              className="  w-4/5 border-white border   bg-white mt-[10rem] ml-[20rem]    h-[30rem] pl-[10rem]"
+              className="  w-4/5 border-white border   bg-white mt-[10rem] md:ml-[20rem] pl-[24rem]    md:h-[30rem] md:pl-[10rem]"
               srcset=""
             />
           </div>
