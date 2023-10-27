@@ -14,20 +14,20 @@ const TourForm = () => {
 
   const handleImage = (e) => {
     e.preventDefault();
-    console.log(e.target.files);
-    setImage(e.target.files);
+    console.log(e.target.files, "file");
+    setImage(e.target.files[0]);
   };
 
   const formData = new FormData();
   formData.append("backdropImage", image);
-  formData.append("Gallery", image);
+
   formData.append("title", title);
   formData.append("description", description);
   formData.append("duration", duration);
   formData.append("destination", destination);
 
   const handleForm = (e) => {
-    console.log("Hii");
+    //console.log("Hii");
     e.preventDefault();
 
     axios({
@@ -35,11 +35,14 @@ const TourForm = () => {
 
       url: "https://holiday-planner-4lnj.onrender.com/api/v1/tour/create",
       data: formData,
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
     })
       .then((response) => {
         console.log(response);
 
-        toast.success(response.success);
+        toast.success(response.data.message);
         setTimeout(() => {
           navigate("/tourDash");
         }, 3000);
@@ -139,7 +142,6 @@ const TourForm = () => {
               <input
                 onChange={(e) => handleImage(e)}
                 type="file"
-                multiple="multiple"
                 id="email"
                 class="border-2 hover:border-2 border-grey-500 hover:border-secondary  rounded-lg py-4 px-20 text-black"
                 placeholder="Enter your image"

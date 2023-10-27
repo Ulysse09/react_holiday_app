@@ -19,7 +19,7 @@ const Sign_up = () => {
 
     axios({
       method: "POST",
-      url: "https://holiday-api-zj3a.onrender.com/api/v1//auth/signup",
+      url: "https://holiday-planner-4lnj.onrender.com/api/v1/auth/signup",
       data: {
         email: email,
         fullName: firstName + lastName,

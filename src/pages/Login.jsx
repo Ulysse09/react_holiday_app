@@ -15,7 +15,7 @@ const Login = () => {
 
     axios({
       method: "POST",
-      url: "https://holiday-api-zj3a.onrender.com/auth/login",
+      url: "https://holiday-planner-4lnj.onrender.com/api/v1/auth/login",
       data: {
         email: email,
         password: passWord,
@@ -24,7 +24,7 @@ const Login = () => {
       .then((response) => {
         console.log(response);
 
-        toast.success(success.message);
+        toast.success(response.data.message);
 
         localStorage.setItem("token", response.data.access_token);
         setTimeout(() => {
