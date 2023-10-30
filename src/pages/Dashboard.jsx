@@ -22,10 +22,10 @@ const Dashboard = () => {
   };
   return (
     <>
-      <div className="px-4 flex justify-between">
+      <div className="px-4 flex relative ">
         {/* sidebar */}
 
-        <div className="w-1/6 hidden md:flex md:flex-col px-1 shadow-xl shadow-r rounded-xl items-center h-[100vh]">
+        <div className="lg:w-1/6  md:w-1/4 container mx-auto hidden  md:flex md:flex-col px-1 shadow-xl shadow-r rounded-xl items-center h-[100vh]">
           <div className=" py-8 flex space-x-6 items-center ml-10  justify-evenly">
             <div className="flex">
               <img src={logo} alt="" srcset="" />
@@ -34,7 +34,7 @@ const Dashboard = () => {
               <img src={kleon} alt="" />
             </div>
           </div>
-          <div className="space-y-[0.5rem] px-[2rem]  ">
+          <div className="space-y-[0.5rem] px-[2rem] ">
             <div className="flex flex-col items-start text-2xl ">
               <Link to={""}>
                 <button className="font-semibold hover:bg-slate-200 px-4 py-4 rounded-xl  flex items-center space-x-10 flex-row">
@@ -93,10 +93,10 @@ const Dashboard = () => {
 
         {/* main component */}
 
-        <div className="w-5/6">
+        <div className="lg:w-5/6 md:w-3/4 flex-col container mx-auto">
           {/* header */}
 
-          <div className="p-10 flex justify-between items-center">
+          <div className="p-10 flex justify-between items-center mx-auto">
             <h2 className="text-4xl font-bold">Hello Paul</h2>
             <div className="flex flex-row items-center">
               <p>
@@ -115,51 +115,63 @@ const Dashboard = () => {
 
         {/* Modal */}
         {openDash && (
-          <div className="bg-white animationDash md:hidden   w-full h-full fixed top-0   right-0 z-10 pr-14 space-y-20 flex items-center  mx-auto justify-between ">
+          <div className="bg-white animationDash md:hidden fixed   w-full h-full  top-0   right-0 z-10 pr-14 pb-52 space-y-20 flex items-center  mx-auto justify-between ">
             <div className="space-y-14">
               <p className="text-white font-semibold"></p>
-              <div className=" flex flex-col space-y-4  font-body font-semibold text-3xl bg-white text-black mr-14  px-44 pr-[10rem] items-start py-8 rounded-lg">
+              <div className=" flex flex-col items-center space-y-4  font-body font-semibold text-3xl bg-white text-black md:mr-14 container mx-auto  md:px-44 pl-[5rem]  py-8 rounded-lg">
                 <Link to={""}>
-                  <button className="font-semibold hover:bg-slate-200 px-4 py-4 rounded-xl  flex items-center space-x-10 flex-row">
+                  <button
+                    onClick={close}
+                    className="font-semibold hover:bg-slate-200 px-4 py-4 rounded-xl  flex items-center space-x-10 flex-row"
+                  >
                     <span>
                       <RxDashboard />
                     </span>
                     <p>Dashboards</p>
                   </button>{" "}
                 </Link>
-                <Link to={"/about"}>
-                  <p className="hover:text-secondary" onClick={close}>
-                    About
-                  </p>
+                <Link to={"tourDash"}>
+                  <button
+                    onClick={close}
+                    className="font-semibold   flex items-center  px-8 hover:bg-slate-200   py-4 rounded-xl space-x-10 flex-row"
+                  >
+                    <span>
+                      <FaRegPaperPlane />
+                    </span>
+                    <p>Tour</p>
+                  </button>
                 </Link>
-                <Link to={"/Tour"}>
-                  <p className="hover:text-secondary" onClick={close}>
-                    Tour
-                  </p>
+                <Link to={"contactDash"}>
+                  <button
+                    onClick={close}
+                    className="font-semibold flex items-center hover:bg-slate-200 px-4 py-4 rounded-xl space-x-10 flex-row"
+                  >
+                    <span>
+                      <RiContactsBook2Line />
+                    </span>
+                    <p>Contacts</p>
+                  </button>
                 </Link>
+                <Link to={"bookingsDash"}>
+                  <button
+                    onClick={close}
+                    className="font-semibold flex items-center hover:bg-slate-200 px-4 py-4 rounded-xl space-x-10 flex-row "
+                  >
+                    <span>
+                      <AiOutlineCalendar />
+                    </span>
 
-                <Link to={"/Contact"}>
-                  <p className="hover:text-secondary" onClick={close}>
-                    Contact us
-                  </p>
+                    <p>Bookings</p>
+                  </button>
                 </Link>
+                <Link to={"/"}>
+                  <button className="font-semibold flex items-center hover:bg-slate-200 px-4 py-4 rounded-xl space-x-10 flex-row ">
+                    <span>
+                      <BsHouseDoor />
+                    </span>
 
-                <Link to={"/Login"}>
-                  <p className="hover:text-secondary" onClick={close}>
-                    Login
-                  </p>
-                </Link>
-
-                <Link to={"/Sign_up"}>
-                  <p className="hover:text-secondary" onClick={close}>
-                    Sign up
-                  </p>
-                </Link>
-
-                <Link to={"/dashboard"}>
-                  <p className="hover:text-secondary" onClick={close}>
-                    Dashboard
-                  </p>
+                    <p>Home</p>
+                  </button>
                 </Link>
               </div>
             </div>

@@ -17,31 +17,33 @@ const TourDetails = () => {
         </p>
       </div>
 
-      <div className="container mx-auto flex">
-        <div className="w-2/3 container mt-20 mx-auto shadow-lg">
+      {/* main content */}
+
+      <div className="container mx-auto flex flex-col md:flex-row">
+        <div className="md:w-2/3 container mt-44 md:mt-32 mb-32  shadow-lg">
           <form action="" className="flex justify-center  ">
-            <div className=" border-2 border-slate-400 rounded-l-lg mr-0 py-4 px-8 bg-secondary text-white  ">
+            <div className=" border-2 border-slate-400 rounded-l-lg mr-0 py-4 md:px-8 bg-secondary px:4 text-white  ">
               <label htmlFor="" className=" text-center">
                 Information
               </label>
             </div>
-            <div className=" border-2 hover:bg-secondary border-slate-400 border-l-0  ml-0 py-4 px-12  ">
+            <div className=" border-2 hover:bg-secondary hover:text-white border-slate-400 border-l-0  ml-0 py-4 px-2 md:px-12  ">
               <label htmlFor="">Tour plan</label>
             </div>
-            <div className=" border-2 hover:bg-secondary border-slate-400  border-l-0  py-4 px-12  ">
+            <div className=" border-2 hover:bg-secondary hover:text-white border-slate-400  border-l-0  py-4 px-2 md:px-12  ">
               <label htmlFor="">Location</label>
             </div>
-            <div className=" border-2 hover:bg-secondary border-slate-400 border-l-0  py-4 px-12  ">
+            <div className=" border-2 hover:bg-secondary hover:text-white border-slate-400 border-l-0  py-4 px-2 md:px-12  ">
               <label htmlFor="">Gallery</label>
             </div>
-            <div className=" border-2 hover:bg-secondary border-slate-400 rounded-r-lg border-l-0  py-4 px-10  ">
+            <div className=" border-2 hover:bg-secondary hover:text-white border-slate-400 rounded-r-lg border-l-0  py-4 md:px-10 px-2  ">
               <label htmlFor="">Review</label>
             </div>
           </form>
 
-          <div className="px-12 py-10 mr-[4rem] space-y-10 shadow-2xl">
-            <div className="flex justify-between items-center  ">
-              <h1 className="text-4xl w-1/2 font-normal font-body items-center">
+          <div className="md:px-12 md:py-10 md:mr-[4rem] space-y-10 shadow-2xl">
+            <div className="flex justify-between pt-7 items-center md:flex-row space-y-4 flex-col  ">
+              <h1 className="md:text-4xl text-2xl md:w-1/2 font-normal text-center md:text-left font-body items-center">
                 A wonderful serenity has taken possession of my entire soul
               </h1>
 
@@ -51,7 +53,7 @@ const TourDetails = () => {
             </div>
 
             {/* icons */}
-            <div className="flex bg-secondary px-4 py-8 justify-evenly   mx-2">
+            <div className="flex flex-col md:flex-row space-y-4 bg-secondary px-4 py-8 justify-evenly   mx-2">
               <div className="flex flex-col text-3xl items-center text-white">
                 <AiFillClockCircle />
                 <p className="text-black font-semibold">2 days</p>
@@ -99,56 +101,56 @@ const TourDetails = () => {
 
             {/* video */}
 
-            <div className="flex justify-start">
-              <table className="">
+            <div className="flex justify-start overflow-x-auto">
+              <table className="min-w-full">
                 <thead>
-                  <tr className="">
-                    <td className="font-semibold text-2xl px-24 border-t-2 border-b-2 border-r-2 border-slate-300 p-4">
+                  <tr>
+                    <td className="font-semibold text-2xl md:px-24 border-t-2 border-b-2 border-r-2 border-slate-300 md:p-4">
                       Destination
                     </td>
-                    <td className="text-2xl border-b-2 border-t-2   border-slate-300 p-4">
+                    <td className="text-2xl border-b-2 border-t-2   border-slate-300 md:p-4">
                       Greece
                     </td>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td className="font-semibold text-2xl px-24 border-b-2 border-r-2 border-slate-300">
+                    <td className="font-semibold text-2xl md:px-24 border-b-2 border-r-2 border-slate-300">
                       Departure
                     </td>
-                    <td className="text-xl border-b-2   border-slate-300 p-4">
+                    <td className="text-xl border-b-2   border-slate-300 md:p-4">
                       Lorem Ipsum
                     </td>
                   </tr>
                   <tr>
-                    <td className="font-semibold text-2xl px-24 border-b-2 border-r-2 border-slate-300">
+                    <td className="font-semibold text-2xl md:px-24 border-b-2 border-r-2 border-slate-300">
                       Departure time
                     </td>
-                    <td className="text-xl border-b-2   border-slate-300 p-4">
+                    <td className="text-xl border-b-2   border-slate-300 md:p-4">
                       9:15am to 9:30am
                     </td>
                   </tr>
                   <tr>
-                    <td className="font-semibold text-2xl px-24 border-b-2 border-r-2 border-slate-300">
+                    <td className="font-semibold text-2xl md:px-24 border-b-2 border-r-2 border-slate-300">
                       Return time
                     </td>
-                    <td className="text-xl border-b-2   border-slate-300 p-4">
+                    <td className="text-xl border-b-2   border-slate-300 md:p-4">
                       Approximately 10:30pm
                     </td>
                   </tr>
                   <tr>
-                    <td className="font-semibold text-2xl px-24 border-b-2 border-r-2 border-slate-300">
+                    <td className="font-semibold text-2xl md:px-24 border-b-2 border-r-2 border-slate-300">
                       Dress Code
                     </td>
-                    <td className="text-xl border-b-2   border-slate-300 p-4">
+                    <td className="text-xl border-b-2   border-slate-300 md:p-4">
                       Comfortable clothing and light jacket
                     </td>
                   </tr>
                   <tr>
-                    <td className="font-semibold text-2xl px-24 border-b-2 border-r-2 border-slate-300">
+                    <td className="font-semibold text-2xl md:px-24 border-b-2 border-r-2 border-slate-300">
                       Price Include
                     </td>
-                    <td className="text-xl border-b-2   border-slate-300 p-4">
+                    <td className="text-xl border-b-2   border-slate-300 md:p-4">
                       <div className="flex flex-col">
                         <p>5 star accomodation</p>
                         <p>Air fases</p>
@@ -158,10 +160,10 @@ const TourDetails = () => {
                     </td>
                   </tr>
                   <tr>
-                    <td className="font-semibold text-2xl px-24 border-b-2 border-r-2 border-slate-300">
+                    <td className="font-semibold text-2xl md:px-24 border-b-2 border-r-2 border-slate-300">
                       Price Not Included
                     </td>
-                    <td className="text-xl border-b-2   border-slate-300 p-4">
+                    <td className="text-xl border-b-2   border-slate-300 md:p-4">
                       <div className="flex flex-col">
                         <p>Guide service Fee</p>
                         <p>Any private expenses</p>
@@ -174,7 +176,9 @@ const TourDetails = () => {
             </div>
           </div>
         </div>
-        <div className="w-1/3">
+
+        {/* side component */}
+        <div className="md:w-1/3">
           <div className="flex flex-col p-4 shadow-xl transform translate-y-[-5.5rem]  bg-white  ">
             <h2 className="font-semibold text-2xl flex justify-center">
               Book your tour

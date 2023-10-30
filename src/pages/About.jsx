@@ -5,8 +5,8 @@ import air1 from "../assets/air2.jpg";
 
 const About = () => {
   return (
-    <div className="flex flex-col  md:flex-row   mx-auto container justify-between md:items-center md:px-8 mb-44   ">
-      <div className="space-y-6 flex flex-col items-start  md:w-1/2 mt-8">
+    <div className="flex flex-col  md:flex-row    mx-auto container justify-between md:items-center md:px-8 mb-44   ">
+      <div className="space-y-6 flex flex-col items-start  md:w-1/2 mt-24">
         <div className=" relative ]">
           <img
             className="md:h-[30rem] h-[15rem] md:w-[28rem] w-[20rem] bg-cover  border-secondary border-[0.3rem] p-1 border-spacing-[10rem] bg-center z-[-10] "

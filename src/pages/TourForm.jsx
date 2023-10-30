@@ -1,16 +1,19 @@
 import axios from "axios";
 import React from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const TourForm = () => {
   const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
+  const [groupSize, setGroupSize] = useState("");
   const [destination, setDestination] = useState("");
   const [duration, setDuration] = useState("");
   const [image, setImage] = useState("");
+  const [price, setPrice] = useState("");
+  const navigate = useNavigate();
 
   const handleImage = (e) => {
     e.preventDefault();
@@ -22,9 +25,10 @@ const TourForm = () => {
   formData.append("backdropImage", image);
 
   formData.append("title", title);
-  formData.append("description", description);
-  formData.append("duration", duration);
+  formData.append("GroupSize", groupSize);
+  formData.append("Duration", duration);
   formData.append("destination", destination);
+  formData.append("Price", price);
 
   const handleForm = (e) => {
     //console.log("Hii");
@@ -44,7 +48,7 @@ const TourForm = () => {
 
         toast.success(response.data.message);
         setTimeout(() => {
-          navigate("/tourDash");
+          navigate("/dashboard/tourDash");
         }, 3000);
       })
       .catch((error) => {
@@ -54,20 +58,22 @@ const TourForm = () => {
   };
 
   return (
-    <div className="p-14 bg-slate-100 h-[100vh] ">
+    <div className="md:p-14 bg-slate-100 h-[100vh] ">
       <ToastContainer />
-      <div className="p-8 rounded-lg bg-white ">
+      <div className="md:p-8 rounded-lg flex flex-col items-center md:flex bg-white ">
         <form
           action="/"
           method="get"
           id="form"
           class="flex flex-col space-y-4 px-[14rem] "
         >
-          <h2 className="font-bold text-3xl">Tour Form</h2>
+          <h2 className="font-bold  text-2xl text-center md:text-3xl">
+            Tour Form
+          </h2>
 
-          <div className="flex flex-col space-y-8 justify-center  md: container ">
-            <div className="flex-row flex justify-between space-x-4">
-              <div className="flex flex-col">
+          <div className="flex flex-col items-center md:items-start space-y-8 justify-center  md: container ">
+            <div className="md:flex-row md:flex flex-col items-center  flex justify-between md:space-x-4">
+              <div className="flex flex-col ">
                 <label htmlFor="" className="font-semibold">
                   Title
                 </label>
@@ -86,22 +92,22 @@ const TourForm = () => {
 
               <div className="flex flex-col">
                 <label htmlFor="" className="font-semibold">
-                  Description
+                  Group size
                 </label>
                 <input
-                  value={description}
+                  value={groupSize}
                   onChange={(e) => {
-                    setDescription(e.target.value);
+                    setGroupSize(e.target.value);
                   }}
                   type="email"
                   id="email"
-                  class=" border-2 hover:border-2 border-grey-500 hover:border-secondary rounded-lg px-20 py-4 text-black"
+                  class=" border-2 hover:border-2 border-grey-500 hover:border-secondary rounded-lg px-24 py-4 text-black"
                   placeholder="Enter your description"
                 />
               </div>
             </div>
 
-            <div className="flex-row flex justify-between space-x-4">
+            <div className="md:flex-row md:flex flex flex-col items-center justify-between md:space-x-4">
               <div className="flex flex-col">
                 <label htmlFor="" className="font-semibold">
                   Destination
@@ -129,31 +135,51 @@ const TourForm = () => {
                   }}
                   type="email"
                   id="email"
-                  class="border-2 hover:border-2 border-grey-500 hover:border-secondary  rounded-lg py-4 px-20 text-black"
+                  class="border-2 hover:border-2 border-grey-500 hover:border-secondary  rounded-lg py-4 px-24 text-black"
                   placeholder="Enter your duration"
                 />
               </div>
             </div>
 
-            <div className="flex flex-col">
-              <label htmlFor="" className="font-semibold">
-                Image
-              </label>
-              <input
-                onChange={(e) => handleImage(e)}
-                type="file"
-                id="email"
-                class="border-2 hover:border-2 border-grey-500 hover:border-secondary  rounded-lg py-4 px-20 text-black"
-                placeholder="Enter your image"
-              />
+            <div className="md:flex-row md:flex flex flex-col items-center justify-between md:space-x-4">
+              <div className="flex flex-col">
+                <label htmlFor="" className="font-semibold">
+                  Image
+                </label>
+                <input
+                  onChange={(e) => handleImage(e)}
+                  type="file"
+                  id="email"
+                  class="border-2 hover:border-2 border-grey-500 hover:border-secondary  rounded-lg py-4 px-10 md:px-10 text-black"
+                  placeholder="Enter your image"
+                />
+              </div>
+
+              <div className="flex flex-col">
+                <label htmlFor="" className="font-semibold">
+                  Price
+                </label>
+                <input
+                  value={price}
+                  onChange={(e) => {
+                    setPrice(e.target.value);
+                  }}
+                  type="text"
+                  id="name1"
+                  class="border-2 hover:border-2 border-grey-500 focus:border-secondary hover:border-secondary rounded-lg py-4 px-24 text-black "
+                  placeholder="Enter your Price "
+                />
+              </div>
             </div>
 
-            <button
-              className="px-6 w-1/2 bg-secondary text-white py-4 rounded-lg text-xl"
-              onClick={handleForm}
-            >
-              <p>Add tour</p>
-            </button>
+            <div className="flex justify-start">
+              <button
+                className="px-6    bg-secondary items-center md:items-start  text-white py-4 rounded-lg text-xl"
+                onClick={handleForm}
+              >
+                <p>Add tour</p>
+              </button>
+            </div>
           </div>
         </form>
       </div>

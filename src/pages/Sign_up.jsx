@@ -74,7 +74,6 @@ const Sign_up = () => {
                 placeholder="Enter your email"
               />
             </div>
-            <p>{email}</p>
 
             <div className="flex flex-col">
               <label htmlFor="" className="font-semibold">
