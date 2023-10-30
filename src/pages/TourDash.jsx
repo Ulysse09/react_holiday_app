@@ -66,7 +66,7 @@ const TourDash = () => {
   }, []);
 
   return (
-    <div className="pt-8 flex flex-col justify-center   lg:px-[5rem] lg:pt-[4rem] ">
+    <div className="pt-8 flex flex-col   lg:px-[5rem] lg:pt-[4rem] ">
       <div className="flex justify-end mb-10 md:pb-[4rem]">
         <Link to={"/dashboard/tourForm"}>
           <button className="bg-secondary rounded-lg text-white text-2xl font-semibold px-6 py-4">
@@ -78,7 +78,7 @@ const TourDash = () => {
 
       {/* table */}
 
-      <div className="w-[90vw] overflow-x-auto">
+      <div className="w-[90vw] md:w-auto overflow-x-auto">
         <table className="shadow-2xl  rounded-xl  items-center  mx-auto   overflow-y-scroll    md:overflow-hidden md:overflow-x-hidden justify-center  md:px-4 ">
           <thead className=" bg-gray-50">
             <tr className="font-bold  md:text-2xl   border-b-2 border-b-slate-200  md:space-x-1">
