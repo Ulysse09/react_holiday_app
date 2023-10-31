@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { BsChevronRight } from "react-icons/bs";
 import { Link, Outlet } from "react-router-dom";
 import { AiFillClockCircle } from "react-icons/ai";
@@ -6,14 +6,48 @@ import { HiUsers } from "react-icons/hi";
 import { BiSolidUserPlus } from "react-icons/bi";
 import { FaLocationDot } from "react-icons/fa6";
 import { FaSun } from "react-icons/fa6";
-
+import { useParams } from "react-router-dom";
+import axios from "axios";
 const TourDetails = () => {
+  const params = useParams();
+  const tourId = params.id;
+
+  const [destination, setDestination] = useState("");
+
+  const fetchTour = () => {
+    const token = localStorage.getItem("token");
+    console.log(token, "token");
+    console.log(
+      `https://holiday-planner-4lnj.onrender.com/api/v1/tour/getElement/fieldName=_id&value=${tourId}`,
+      "Perfcet"
+    );
+    axios({
+      method: "GET",
+      url: `https://holiday-planner-4lnj.onrender.com/api/v1/tour/getElement/fieldName=_id&value=${tourId}`,
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((response) => {
+        console.log(response.data);
+
+        setDestination(response?.data?.destination);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  useEffect(() => {
+    fetchTour();
+  }, []);
+
   return (
     <>
       <div className="  text-center mb-32 px-8 py-52 md:p-40">
         <div className="bg-image2" />
         <p className="font-bold font-body md:text-7xl text-4xl py-2 px-2 text-white container mx-auto ">
-          Italy
+          Italy{destination}
         </p>
       </div>
 

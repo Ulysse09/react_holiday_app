@@ -20,7 +20,7 @@ const EditTour = () => {
     const token = localStorage.getItem("token");
     axios({
       method: "GET",
-      url: `https://holiday-planner-4lnj.onrender.com/api/v1/tour/getElement?fieldName=_id&value=${tourId}`,
+      url: `https://holiday-planner-4lnj.onrender.com/api/v1/tour/getElement/fieldName=_id&value=${tourId}`,
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -101,7 +101,7 @@ const EditTour = () => {
             <h2 className="font-bold text-3xl">Edit tour </h2>
 
             <div className="flex flex-col space-y-8  justify-center  md: container ">
-              <div className="flex-col md:flex-row flex justify-between space-x-4">
+              <div className="flex-col md:flex-row flex justify-between md:space-x-4">
                 <div className="flex flex-col">
                   <label htmlFor="" className="font-semibold">
                     Price
@@ -136,7 +136,7 @@ const EditTour = () => {
                 </div>
               </div>
 
-              <div className="md:flex-row flex-col  flex justify-between space-x-4">
+              <div className="md:flex-row flex-col  flex justify-between md:space-x-4">
                 <div className="flex flex-col">
                   <label htmlFor="" className="font-semibold">
                     Destination

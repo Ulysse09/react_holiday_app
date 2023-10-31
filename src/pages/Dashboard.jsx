@@ -96,7 +96,7 @@ const Dashboard = () => {
         <div className="lg:w-5/6 md:w-3/4 flex-col container mx-auto">
           {/* header */}
 
-          <div className="p-10 flex justify-between items-center mx-auto">
+          <div className="md:p-10 flex justify-between items-center mx-auto">
             <h2 className="text-4xl font-bold">Hello Paul</h2>
             <div className="flex flex-row items-center">
               <p>

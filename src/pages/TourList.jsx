@@ -1,26 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import pic from "../assets/10002.jpg";
 import picc from "../assets/10003.jpg";
 import piccc from "../assets/10004.jpg";
 import { BsChevronRight } from "react-icons/bs";
 import { Link } from "react-router-dom";
+import axios from "axios";
+
 const TourList = () => {
   const TourCard = ({ tour }) => {
-    const { title, description, price, image } = tour;
+    const { title, Price, backdropImage, description, destination, _id } = tour;
 
     return (
       <div className="flex flex-col items-start md:w-1/3    py-8   ">
         <div className="  ">
           <img
             className="bg-cover  w-[44rem] h-[20rem]    "
-            src={image}
+            src={backdropImage}
             alt={title}
           />
         </div>
 
         <div className="tour-info flex flex-col text-left  items-start  space-x-4 border-l-secondary border-l-4">
           <h2 className="font-semibold text-left text-2xl  bg-secondary transform translate-x-2 p-2 translate-y-[-1rem]   text-white">
-            {title}
+            {destination}
           </h2>
           <p className="tour-description max-w-2xl  font-semibold  text-left">
             {description}
@@ -31,8 +33,8 @@ const TourList = () => {
             live in Bookmarksgrove.
           </p>
           <div className="flex space-x-12">
-            <p className="tour-price text-3xl font-bold">{price}</p>
-            <Link to={"/tourDetails"}>
+            <p className="tour-price text-3xl font-bold">{Price}</p>
+            <Link to={`/tourDetails/${_id}`}>
               <button className="px-4 py-2 bg-secondary text-white rounded-lg">
                 Book now{" "}
               </button>
@@ -43,41 +45,59 @@ const TourList = () => {
     );
   };
 
-  const TourListMain = (tours) => {
-    tours = [
-      {
-        id: 1,
-        title: "Greece",
-        description:
-          "Holiday Planners is a World Leading Online Tour Booking Platform.",
-        price: "$100",
-        image: pic,
+  const TourListMain = () => {
+    const [tours, setTours] = useState([]);
+    let token = localStorage.getItem("token");
+
+    axios({
+      method: "GET",
+      url: "https://holiday-planner-4lnj.onrender.com/api/v1/tour/",
+      headers: {
+        Authorization: `Bearer ${token}`,
       },
-      {
-        id: 2,
-        title: "Jerusalem",
-        description:
-          "Holiday Planners is a World Leading Online Tour Booking Platform.",
-        price: "$120",
-        image: picc,
-      },
-      {
-        id: 3,
-        title: "Italy",
-        description:
-          "Holiday Planners is a World Leading Online Tour Booking Platform.",
-        price: "$90",
-        image: piccc,
-      },
-      {
-        id: 4,
-        title: "Santorini",
-        description:
-          "Holiday Planners is a World Leading Online Tour Booking Platform.",
-        price: "$100",
-        image: pic,
-      },
-    ];
+    })
+      .then((response) => {
+        console.log(response.data);
+        setTours(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    // tours = [
+    //   {
+    //     id: 1,
+    //     title: "Greece",
+    //     description:
+    //       "Holiday Planners is a World Leading Online Tour Booking Platform.",
+    //     price: "$100",
+    //     image: pic,
+    //   },
+    //   {
+    //     id: 2,
+    //     title: "Jerusalem",
+    //     description:
+    //       "Holiday Planners is a World Leading Online Tour Booking Platform.",
+    //     price: "$120",
+    //     image: picc,
+    //   },
+    //   {
+    //     id: 3,
+    //     title: "Italy",
+    //     description:
+    //       "Holiday Planners is a World Leading Online Tour Booking Platform.",
+    //     price: "$90",
+    //     image: piccc,
+    //   },
+    //   {
+    //     id: 4,
+    //     title: "Santorini",
+    //     description:
+    //       "Holiday Planners is a World Leading Online Tour Booking Platform.",
+    //     price: "$100",
+    //     image: pic,
+    //   },
+    // ];
+
     return (
       <>
         <div className=" md:py-8 md:px-8">
