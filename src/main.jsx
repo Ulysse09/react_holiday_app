@@ -8,7 +8,7 @@ import Contact from "./pages/Contact.jsx";
 
 import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 import Nav from "./components/Nav.jsx";
-import Footer from "./components/footer.jsx";
+import Footer from "./components/footr.jsx";
 import Login from "./pages/Login.jsx";
 import TourList from "./pages/TourList.jsx";
 import TourDetails from "./pages/TourDetails.jsx";
