@@ -50,7 +50,7 @@ const Dash = () => {
     "Sep",
     "Oct",
     "Nov",
-    "Dec",
+    "December",
   ];
 
   const data = {
