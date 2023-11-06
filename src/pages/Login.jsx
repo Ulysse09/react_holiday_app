@@ -99,7 +99,7 @@ const Login = () => {
             </div>
             <button
               onClick={handleLogin}
-              className="px-6 bg-secondary font-bold text-white py-4 rounded-lg text-3xl"
+              className="px-6 bg-secondary font-bold hover:bg-black text-white py-4 rounded-lg text-3xl"
             >
               {isLoading ? "Logging in..." : "Log in "}
             </button>

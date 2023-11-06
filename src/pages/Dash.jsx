@@ -1,6 +1,4 @@
 import React from "react";
-import { BsPencilFill } from "react-icons/bs";
-import { BsTrashFill } from "react-icons/bs";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -112,7 +110,7 @@ const Dash = () => {
           <Bar options={options} data={data} className="   " />;
         </div>
 
-        <div className=" md:p-4 w-1/2 h-[20rem] flex justify-center">
+        <div className=" md:p-20  w-1/2  flex">
           <Doughnut data={data1} className="" />;
         </div>
       </div>

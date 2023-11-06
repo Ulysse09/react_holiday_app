@@ -9,7 +9,7 @@ const Sign_up = () => {
   const [lastName, setLastName] = useState("");
   const [passWord, setPassword] = useState("");
   const [email, setEmail] = useState("");
-  const [isLoading, setIsLoading] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const navigate = useNavigate();
 
@@ -41,6 +41,8 @@ const Sign_up = () => {
         setTimeout(() => {
           navigate("/login");
         }, 3000);
+
+        setIsLoading(false);
       })
       .catch((error) => {
         toast.error("Error");
@@ -50,6 +52,8 @@ const Sign_up = () => {
     setFirstName("");
     setLastName("");
     setPassword("");
+
+    setIsLoading(true);
   };
   return (
     <div className="container mx-auto">
@@ -136,8 +140,10 @@ const Sign_up = () => {
             </div>
             <button
               onClick={handleSubmit}
-              className="px-6 bg-secondary text-white py-4 rounded-lg text-xl"
-            ></button>
+              className="px-6 bg-secondary text-white py-4 rounded-lg text-3xl font-bold hover:bg-black hover:text-white"
+            >
+              {isLoading ? "Signing up..." : "Sign up "}
+            </button>
           </div>
         </form>
       </div>
