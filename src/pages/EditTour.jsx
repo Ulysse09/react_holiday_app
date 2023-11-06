@@ -20,7 +20,7 @@ const EditTour = () => {
     const token = localStorage.getItem("token");
     axios({
       method: "GET",
-      url: `https://holiday-planner-4lnj.onrender.com/api/v1/tour/getElement/fieldName=_id&value=${tourId}`,
+      url: `https://holiday-planner-4lnj.onrender.com/api/v1/tour/getElement?fieldName=_id&value=${tourId}`,
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -84,19 +84,44 @@ const EditTour = () => {
     setImage(e.target.files[0]);
   };
 
+  const handleDelete = (id) => {
+    if (window.confirm("Are you sure you want to delete?")) {
+      let token = localStorage.getItem("token");
+      axios({
+        url: `https://holiday-planner-4lnj.onrender.com/api/v1/booking/delete/${id}`,
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+        .then((response) => {
+          toast.success("Delete successful");
+          setTimeout(() => {
+            navigate("/dashboard/tourDash");
+          }, 3000);
+          console.log(response, "response");
+        })
+
+        .catch((error) => {
+          console.log(error, "Error");
+          toast.error(error.message);
+        });
+    }
+  };
+
   const [image, setImage] = useState("");
   const navigate = useNavigate();
 
   return (
     <div>
-      <div className="md:p-14 bg-slate-100 h-[100vh] ">
+      <div className="md:pt-[3rem] px-[10rem] bg-slate-100 h-[100vh] ">
         <ToastContainer />
-        <div className="md:p-8 rounded-lg bg-white ">
+        <div className="md:p-0 rounded-lg bg-slate-100   ">
           <form
             action="/"
             method="get"
             id="form"
-            class="flex flex-col items-center md:items-start space-y-4 md:px-[14rem] "
+            class="flex rounded-xl flex-col items-center md:items-start bg-white space-y-4 md:px-[4rem] "
           >
             <h2 className="font-bold text-3xl">Edit tour </h2>
 

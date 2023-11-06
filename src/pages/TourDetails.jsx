@@ -7,23 +7,31 @@ import { BiSolidUserPlus } from "react-icons/bi";
 import { FaLocationDot } from "react-icons/fa6";
 import { FaSun } from "react-icons/fa6";
 import { useParams } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
+import { MdEmail } from "react-icons/md";
+
 const TourDetails = () => {
   const params = useParams();
   const tourId = params.id;
+  console.log(tourId);
+
+  //fetched data
 
   const [destination, setDestination] = useState("");
+  const [groupSize, setGroupSize] = useState("");
+  const [duration, setDuration] = useState("");
 
   const fetchTour = () => {
     const token = localStorage.getItem("token");
     console.log(token, "token");
     console.log(
-      `https://holiday-planner-4lnj.onrender.com/api/v1/tour/getElement/fieldName=_id&value=${tourId}`,
+      `https://holiday-planner-4lnj.onrender.com/api/v1/tour/getElement?fieldName=_id&value=${tourId}`,
       "Perfcet"
     );
     axios({
       method: "GET",
-      url: `https://holiday-planner-4lnj.onrender.com/api/v1/tour/getElement/fieldName=_id&value=${tourId}`,
+      url: `https://holiday-planner-4lnj.onrender.com/api/v1/tour/getElement?fieldName=_id&value=${tourId}`,
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -32,6 +40,8 @@ const TourDetails = () => {
         console.log(response.data);
 
         setDestination(response?.data?.destination);
+        setDuration(response?.data?.Duration);
+        setGroupSize(response?.data?.GroupSize);
       })
       .catch((error) => {
         console.log(error);
@@ -42,42 +52,94 @@ const TourDetails = () => {
     fetchTour();
   }, []);
 
+  // posted data
+
+  const [fullName, setFullName] = useState("");
+  const [email, setEmail] = useState("");
+
+  const [phone, setPhone] = useState("");
+  const [date, setDate] = useState("");
+  const [tickets, setTickets] = useState("");
+  const [message, setMessage] = useState("");
+
+  const formData = new FormData();
+  formData.append("fullname", fullName);
+  formData.append("tourID", tourId);
+  formData.append("email", email);
+
+  formData.append("phone", phone);
+  formData.append("date", date);
+  formData.append("tickets", tickets);
+  formData.append("message", message);
+
+  //isLoading state
+
+  const [isLoading, setIsLoading] = useState(false);
+  //form handling
+
+  const handleForm = (e) => {
+    console.log("Hii");
+    e.preventDefault();
+    const token = localStorage.getItem("token");
+    console.log(token, "token");
+
+    axios({
+      url: `https://holiday-planner-4lnj.onrender.com/api/v1/booking/create`,
+      data: formData,
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => {
+        toast.success(response.data.message);
+        console.log(response);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error(error.message);
+      });
+    setIsLoading(true);
+  };
   return (
     <>
-      <div className="  text-center mb-32 px-8 py-52 md:p-40">
+      <ToastContainer />
+      <div className="  text-center mb-12 px-8 py-52 md:p-40">
         <div className="bg-image2" />
         <p className="font-bold font-body md:text-7xl text-4xl py-2 px-2 text-white container mx-auto ">
-          Italy{destination}
+          {destination}
         </p>
       </div>
 
       {/* main content */}
 
       <div className="container mx-auto flex flex-col md:flex-row">
-        <div className="md:w-2/3 container mt-44 md:mt-32 mb-32  shadow-lg">
-          <form action="" className="flex justify-center  ">
-            <div className=" border-2 border-slate-400 rounded-l-lg mr-0 py-4 md:px-8 bg-secondary px:4 text-white  ">
-              <label htmlFor="" className=" text-center">
-                Information
-              </label>
-            </div>
-            <div className=" border-2 hover:bg-secondary hover:text-white border-slate-400 border-l-0  ml-0 py-4 px-2 md:px-12  ">
-              <label htmlFor="">Tour plan</label>
-            </div>
-            <div className=" border-2 hover:bg-secondary hover:text-white border-slate-400  border-l-0  py-4 px-2 md:px-12  ">
-              <label htmlFor="">Location</label>
-            </div>
-            <div className=" border-2 hover:bg-secondary hover:text-white border-slate-400 border-l-0  py-4 px-2 md:px-12  ">
-              <label htmlFor="">Gallery</label>
-            </div>
-            <div className=" border-2 hover:bg-secondary hover:text-white border-slate-400 rounded-r-lg border-l-0  py-4 md:px-10 px-2  ">
-              <label htmlFor="">Review</label>
-            </div>
-          </form>
-
-          <div className="md:px-12 md:py-10 md:mr-[4rem] space-y-10 shadow-2xl">
+        {/* 2/3 pages */}
+        <div className="md:w-2/3 container mt-44 md:mt-4 mb-32  shadow-xl">
+          <div className="md:px-4 md:py-2 md:mr-[4rem] space-y-10 ">
+            <form action="" className="flex justify-center  ">
+              <div className=" border-2 border-gray-700 rounded-l-lg mr-0 py-4 md:px-8 bg-secondary px:4 text-white  ">
+                <label htmlFor="" className=" text-center">
+                  Information
+                </label>
+              </div>
+              <div className=" border-2 hover:bg-secondary hover:text-white border-gray-700 border-l-0  ml-0 py-4 px-2 md:px-12  ">
+                <label htmlFor="">Tour plan</label>
+              </div>
+              <div className=" border-2 hover:bg-secondary hover:text-white border-gray-700     border-l-0  py-4 px-2 md:px-12  ">
+                <label htmlFor="">Location</label>
+              </div>
+              <div className=" border-2 hover:bg-secondary hover:text-white border-gray-700 border-l-0  py-4 px-2 md:px-12  ">
+                <label htmlFor="">Gallery</label>
+              </div>
+              <div className=" border-2 hover:bg-secondary hover:text-white border-gray-700 rounded-r-lg border-l-0  py-4 md:px-10 px-2  ">
+                <label htmlFor="">Review</label>
+              </div>
+            </form>
             <div className="flex justify-between pt-7 items-center md:flex-row space-y-4 flex-col  ">
-              <h1 className="md:text-4xl text-2xl md:w-1/2 font-normal text-center md:text-left font-body items-center">
+              <h1 className="md:text-4xl text-xl md:w-1/2 font-normal text-center md:text-left font-body items-center">
                 A wonderful serenity has taken possession of my entire soul
               </h1>
 
@@ -87,14 +149,14 @@ const TourDetails = () => {
             </div>
 
             {/* icons */}
-            <div className="flex flex-col md:flex-row space-y-4 bg-secondary px-4 py-8 justify-evenly   mx-2">
+            <div className="flex flex-col md:flex-row items-center space-y-4 bg-secondary px-4 py-8 justify-evenly   mx-2">
               <div className="flex flex-col text-3xl items-center text-white">
                 <AiFillClockCircle />
-                <p className="text-black font-semibold">2 days</p>
+                <p className="text-black font-semibold">{duration}</p>
               </div>
               <div className="flex flex-col text-3xl items-center text-white">
                 <HiUsers />
-                <p className="text-black font-semibold"> 6 people</p>
+                <p className="text-black font-semibold"> {groupSize}</p>
               </div>
               <div className="flex flex-col text-3xl items-center text-white">
                 <BiSolidUserPlus />
@@ -102,7 +164,7 @@ const TourDetails = () => {
               </div>
               <div className="flex flex-col text-3xl items-center text-white">
                 <FaLocationDot />
-                <p className="text-black font-semibold">Greece</p>
+                <p className="text-black font-semibold">{destination} </p>
               </div>
               <div className="flex flex-col text-3xl items-center text-white">
                 <FaSun />
@@ -213,7 +275,7 @@ const TourDetails = () => {
 
         {/* side component */}
         <div className="md:w-1/3">
-          <div className="flex flex-col p-4 shadow-xl transform translate-y-[-5.5rem]  bg-white  ">
+          <div className="flex flex-col p-4 shadow-xl transform translate-y-[-2.5rem]  bg-white  ">
             <h2 className="font-semibold text-2xl flex justify-center">
               Book your tour
             </h2>
@@ -230,16 +292,21 @@ const TourDetails = () => {
                     id="name1"
                     class="border-2 border-black rounded-lg p-4 text-black "
                     placeholder="Full Name"
+                    onChange={(e) => setFullName(e.target.value)}
                   />
                 </div>
 
-                <div className="flex flex-col">
+                <div className="flex flex-col relative">
                   <input
                     type="email"
                     id="email"
                     class="border-2  border-black rounded-lg p-4 text-black"
                     placeholder="Email"
+                    onChange={(e) => setEmail(e.target.value)}
                   />
+                  {/* <div className="text-secondary text-xl absolute inset-y-4 left-0">
+                    <MdEmail />
+                  </div> */}
                 </div>
 
                 <div className="flex flex-col">
@@ -247,6 +314,7 @@ const TourDetails = () => {
                     type="text"
                     placeholder="Confirm email"
                     className=" border-black  border-2 rounded-lg p-4"
+                    // onChange={(e) => setConfirmEmail(e.target.value)}
                   />
                 </div>
 
@@ -256,6 +324,7 @@ const TourDetails = () => {
                     id="name1"
                     class="border-2 border-black rounded-lg p-4 text-black "
                     placeholder="Phone"
+                    onChange={(e) => setPhone(e.target.value)}
                   />
                 </div>
 
@@ -265,14 +334,16 @@ const TourDetails = () => {
                     id="email"
                     class="border-2  border-black rounded-lg p-4 text-black"
                     placeholder="Date"
+                    onChange={(e) => setDate(e.target.value)}
                   />
                 </div>
 
                 <div className="flex flex-col">
                   <input
-                    type="Confirm-email"
+                    type="text"
                     className=" border-black  border-2 rounded-lg p-4"
-                    placeholder="Number of text"
+                    placeholder="Number of tickets"
+                    onChange={(e) => setTickets(parseInt(e.target.value))}
                   />
                 </div>
                 <div className="flex flex-col">
@@ -280,6 +351,7 @@ const TourDetails = () => {
                     type="text"
                     className=" border-black  border-2 rounded-lg py-10 px-4"
                     placeholder="Message"
+                    onChange={(e) => setMessage(e.target.value)}
                   />
                 </div>
 
@@ -293,8 +365,11 @@ const TourDetails = () => {
                   <p> Check availability</p>
                 </div>
 
-                <button className="px-6 bg-secondary text-white py-4 rounded-lg text-xl">
-                  Book now
+                <button
+                  onClick={(e) => handleForm(e)}
+                  className="px-6 bg-secondary text-white py-4 rounded-lg text-xl hover:bg-black hover:text-white"
+                >
+                  {isLoading ? "Booking..." : "Book now"}
                 </button>
               </div>
             </form>

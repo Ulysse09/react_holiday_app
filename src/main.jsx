@@ -16,10 +16,12 @@ import Sign_up from "./pages/Sign_up.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
 import Dash from "./pages/Dash.jsx";
 import TourDash from "./pages/TourDash.jsx";
-import ContactDash from "./pages/ContactDash.jsx";
+import UserDash from "./pages/UserDash.jsx";
 import BookingsDash from "./pages/BookingsDash.jsx";
 import TourForm from "./pages/TourForm.jsx";
 import EditTour from "./pages/EditTour.jsx";
+import EditUser from "./pages/EditUser.jsx";
+import EditBooking from "./pages/EditBooking.jsx";
 
 const Layout = () => {
   return (
@@ -48,13 +50,15 @@ ReactDOM.createRoot(document.getElementById("root")).render(
           <Route path="login" element={<Login />} />
           <Route path="sign_up" element={<Sign_up />} />
         </Route>
-        <Route path="dashboard" element={<Dashboard />}>
+        <Route path="/dashboard/" element={<Dashboard />}>
           <Route path="" element={<Dash />} />
           <Route path="tourDash" element={<TourDash />} />
-          <Route path="contactDash" element={<ContactDash />} />
+          <Route path="userDash" element={<UserDash />} />
           <Route path="bookingsDash" element={<BookingsDash />} />
           <Route path="tourForm" element={<TourForm />} />
           <Route path="editTour/:id" element={<EditTour />} />
+          <Route path="editUser/:id" element={<EditUser />} />
+          <Route path="editBooking/:id" element={<EditBooking />} />
         </Route>
       </Routes>
     </BrowserRouter>

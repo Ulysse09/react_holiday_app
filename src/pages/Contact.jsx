@@ -4,7 +4,7 @@ import { BsChevronRight } from "react-icons/bs";
 const Contact = () => {
   return (
     <>
-      <div className=" flex md:flex-row items-center mt-6  flex-col md:justify-between">
+      <div className=" flex md:flex-row   flex-col md:justify-between">
         <div class="md:w-1/2 md:px-8 w-auto ">
           <h1 className="text-secondary font-bold text-5xl ml-2 mb-10">
             Contact us
@@ -13,9 +13,9 @@ const Contact = () => {
             action="/"
             method="get"
             id="form"
-            class="flex flex-col space-y-4 md:p-8 shadow-2xl "
+            class="flex flex-col space-y-4 md:p-8"
           >
-            <div className="md:flex-row flex flex-col space-y-4  md:space-x-4">
+            <div className="md:flex-row flex flex-col   md:space-x-4">
               <input
                 type="text"
                 id="name1"
@@ -31,7 +31,7 @@ const Contact = () => {
               />
             </div>
 
-            <div className="md:space-x-4 md:flex-row space-y-4 flex flex-col">
+            <div className="md:space-x-4 md:flex-row   flex flex-col">
               <input
                 type="text"
                 id="name1"
@@ -58,7 +58,7 @@ const Contact = () => {
             <div>
               <button
                 type="submit"
-                class="px-10 mt-10 py-4 bg-secondary font-Rubik text-white rounded-lg "
+                class="px-10 mt-10 py-4 bg-secondary hover:bg-black transition ease-in-out duration-300 font-Rubik text-white rounded-lg "
                 id="btn1"
               >
                 Submit
@@ -68,8 +68,10 @@ const Contact = () => {
         </div>
 
         <div className="md:w-1/4 flex-col flex space-y-8">
-          <div className="bg-tertiary p-8  px-14 space-y-4 flex flex-col items-start text-center   ">
-            <h2 className="font-semibold text-2xl mb-6">Why book with us?</h2>
+          <div className="bg-tertiary  px-[2rem] py-[2rem] space-y-3 flex flex-col items-start text-center   ">
+            <h2 className="font-bold  px-1 border-l-4 border-l-secondary text-xl mb-6">
+              WHY BOOK WITH US?
+            </h2>
             <p className="font-light flex items-center ">
               <span className="font-bold">
                 <BsChevronRight />
@@ -96,8 +98,8 @@ const Contact = () => {
             </p>
           </div>
 
-          <div className="bg-secondary bg-idea p-8     px-14 space-y-2 flex flex-col items-start text-center text-white   ">
-            <h2 className="font-semibold text-2xl text-white">
+          <div className="bg-secondary bg-idea p-8     px-[2rem] space-y-2 flex flex-col items-start text-center text-white   ">
+            <h2 className="font-semibold text-2xl border-l-4 border-l-black px-1 text-white">
               Got a question
             </h2>
             <p className="font-light text-white flex items-center ">

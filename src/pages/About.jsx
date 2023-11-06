@@ -5,16 +5,16 @@ import air1 from "../assets/air2.jpg";
 
 const About = () => {
   return (
-    <div className="flex flex-col  md:flex-row    mx-auto container justify-between md:items-center md:px-8 mb-44   ">
+    <div className="flex flex-col  md:flex-row    mx-auto container justify-between md:items-center md:px-24 mb-44   ">
       <div className="space-y-6 flex flex-col items-start  md:w-1/2 mt-24">
         <div className=" relative ]">
           <img
-            className="md:h-[30rem] h-[15rem] md:w-[28rem] w-[20rem] bg-cover  border-secondary border-[0.3rem] p-1 border-spacing-[10rem] bg-center z-[-10] "
+            className="md:h-[28rem] h-[15rem] md:w-[24rem] w-[20rem] bg-cover  border-secondary border-[0.3rem] p-1 border-spacing-[10rem] bg-center z-[-10] "
             src={air}
             alt=""
           />
           <img
-            className="md:h-[15rem] h-[10rem] transform translate-x-10 md:translate-x-36 w-[10rem] md:w-[18rem] bg-cover bg-center border-secondary border-[0.3rem] p-1 border-spacing-[10rem]  absolute right-0 bottom-[-4.5rem]    "
+            className="md:h-[10rem] h-[10rem] transform translate-x-10 md:translate-x-[4rem] w-[10rem] md:w-[14rem] bg-cover bg-center border-secondary border-[0.3rem] p-1 border-spacing-[10rem]  absolute right-0 bottom-[-4.5rem]    "
             src={air1}
             alt=""
           />

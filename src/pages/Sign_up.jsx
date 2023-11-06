@@ -9,6 +9,7 @@ const Sign_up = () => {
   const [lastName, setLastName] = useState("");
   const [passWord, setPassword] = useState("");
   const [email, setEmail] = useState("");
+  const [isLoading, setIsLoading] = useState("");
 
   const navigate = useNavigate();
 
@@ -25,10 +26,17 @@ const Sign_up = () => {
         fullName: firstName + lastName,
         password: passWord,
       },
+      headers: {
+        "Content-Type": "application/json",
+      },
     })
       .then((response) => {
         console.log(response);
         localStorage.setItem("token", response.data.access_token);
+        localStorage.setItem("user", JSON.stringify(response.data.user));
+        console.log(
+          localStorage.setItem("user", JSON.stringify(response.data.user))
+        );
         toast.success("Success");
         setTimeout(() => {
           navigate("/login");
@@ -129,9 +137,7 @@ const Sign_up = () => {
             <button
               onClick={handleSubmit}
               className="px-6 bg-secondary text-white py-4 rounded-lg text-xl"
-            >
-              Sign up
-            </button>
+            ></button>
           </div>
         </form>
       </div>

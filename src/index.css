@@ -67,6 +67,11 @@
   z-index: 0;
 }
 
+.cardPicture {
+  background-image: url("./assets/brownZebraPrint.jpg");
+  background-size: cover;
+}
+
 .bg-footer {
   background-image: linear-gradient(rgb(50, 49, 50, 0.9), rgb(50, 49, 50, 0.9)),
     url("./assets/world.jpg");
@@ -110,3 +115,9 @@ table {
     right: 0%;
   }
 }
+
+/* .responsive {
+  width: 20px;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+} */

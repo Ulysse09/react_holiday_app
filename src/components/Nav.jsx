@@ -27,15 +27,15 @@ function Nav() {
 
   return (
     <div className="">
-      <div className=" hidden md:flex justify-between bg-primary text-white p-10 relative    ">
-        <div className="flex space-x-4 p-2 ">
-          <p className="flex items-center space-x-4 font-light">
+      <div className=" hidden md:flex justify-between bg-primary text-white p-5 relative    ">
+        <div className="flex space-x-4 p-0  ">
+          <p className="flex items-center space-x-4 font-light p-2    hover:bg-slate-200 transition duration-300 ease-in-out hover:text-black">
             <span className="  text-3xl text-secondary">
               <FiMail />
             </span>
             holidayplanners@gmail.com
           </p>
-          <p className="flex items-center space-x-6">
+          <p className="flex items-center space-x-6 hover:bg-slate-200 transition ease-in-out duration-300 hover:text-black">
             <span className="text-3xl text-secondary">
               <FiPhoneCall />
             </span>
@@ -43,19 +43,19 @@ function Nav() {
           </p>
         </div>
         <div className="flex justify-evenly items-center space-x-4">
-          <p className="text-3xl text-secondary">
+          <p className="text-3xl text-secondary hover:bg-slate-200 transition duration-300  hover:text-black">
             <FaFacebookF />
           </p>
-          <p className=" text-3xl text-secondary">
+          <p className=" text-3xl text-secondary hover:bg-slate-200 hover:text-black transition duration-300">
             <FaInstagram />
           </p>
-          <p className=" text-3xl text-secondary">
+          <p className=" text-3xl text-secondary hover:bg-slate-200 hover:text-black transition duration-300">
             <FaTwitter />
           </p>
         </div>
       </div>
       {/* white navbar */}
-      <div className="flex justify-between  items-center  p-4 m  transform md:translate-y-[-2.5rem] sticky     bg-white container mx-auto  ">
+      <div className="flex justify-between  items-center  p-4 md:w-[85vw]  transform md:translate-y-[-1.25rem] sticky     bg-white container mx-auto  ">
         <div className="w-1/2">
           <img src={pic} alt="" className="" />
         </div>
@@ -76,6 +76,8 @@ function Nav() {
         </div>
       </div>
 
+      {/* Navigation modal */}
+
       {openModal && (
         <div className="bg-primary animation  w-full h-full fixed top-0   left-0 z-10 pr-14 space-y-20 flex items-center  mx-auto justify-between ">
           <div className="space-y-14">
@@ -87,7 +89,7 @@ function Nav() {
                 </button>
               </Link>
               <Link to={"/about"}>
-                <p className="hover:text-secondary" onClick={close}>
+                <p className="hover:text-secondary " onClick={close}>
                   About
                 </p>
               </Link>

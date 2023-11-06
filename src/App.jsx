@@ -21,7 +21,7 @@ import { AiFillStar } from "react-icons/ai";
 function App() {
   return (
     <>
-      <div className="   text-center md:mb-60 mb-[14rem] px-8 py-52 md:p-36">
+      <div className="   text-center md:mb-16 mb-[10rem] px-8 py-52 md:p-36">
         <div className="bg-image" />
         <p className="font-bold font-body min-w-xl md:text-7xl text-4xl py-2 px-2 text-white container mx-auto ">
           Enjoy the travel with
@@ -29,7 +29,7 @@ function App() {
         </p>
       </div>
 
-      <div className="md:container md:mx-auto md:px-32 md:space-y-[18rem]    ">
+      <div className="md:container md:mx-auto md:px-10 md:space-y-[5rem] px-[0.5rem]    ">
         {/* <div className="flex justify-center  bg-white   mt-[6rem]">
           <form action="" className="flex ">
             <div className=" border rounded-l-lg mr-0 py-2 px-28  border-black">
@@ -55,22 +55,23 @@ function App() {
         <Tour />
 
         <div className="flex md:flex-row flex-col ">
-          <div className="md:w-1/2 flex flex-col  items-end  bg-secondary      transform md:translate-x-[-18rem] md:translate-y-[-14rem] ">
-            <div className="p-5 space-y-6">
+          <div className="md:w-1/2 flex flex-col  items-end  bg-secondary md:h-[100vh]       transform md:translate-x-[-6rem] md:translate-y-[-10rem] ">
+            <div className="p-10 space-y-6">
               <div className="font-normal border-l-white border-l-[0.3rem] flex items-center px-2  text-4xl text-white ">
                 Testimonials{" "}
               </div>
               <p className="font-body text-4xl text-white">Customer reviews</p>
             </div>
-
-            <img
-              src={colon}
-              alt=""
-              className="  w-4/5 border-white border   bg-white mt-[10rem] md:ml-[20rem] pl-[24rem]    md:h-[30rem] md:pl-[10rem]"
-              srcset=""
-            />
+            <div className="w-4/5 ">
+              <img
+                src={colon}
+                alt=""
+                className="   border-white border bg-white      pl-[24rem] md:pb-[10.2rem]      md:pt-[9rem] md:pl-[15rem]"
+                srcset=""
+              />
+            </div>
           </div>
-          <div className="md:w-1/2 space-y-5 transform  md:translate-y-[3rem]">
+          <div className="md:w-1/2 space-y-5 transform  md:translate-y-[7rem]">
             <div className="flex space-x-4 text-secondary text-3xl">
               <p>
                 <AiFillStar />
@@ -96,7 +97,7 @@ function App() {
             </p>
           </div>
         </div>
-        <div className="md:py-32 transform md:translate-y-[-24rem] ">
+        <div className="md: transform md: ">
           <Contact />
         </div>
       </div>

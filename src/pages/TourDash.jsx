@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 
 import "react-toastify/dist/ReactToastify.css";
 import { Link } from "react-router-dom";
+
 import TourForm from "./TourForm";
 
 const TourDash = () => {
@@ -78,8 +79,8 @@ const TourDash = () => {
 
       {/* table */}
 
-      <div className="w-[90vw] md:w-auto overflow-x-auto">
-        <table className="shadow-2xl  rounded-xl  items-center  mx-auto   overflow-y-scroll    md:overflow-hidden md:overflow-x-hidden justify-center  md:px-4 ">
+      <div className=" md:w-auto overflow-x-auto">
+        <table className="shadow-2xl table-fixed  rounded-xl  items-center  mx-auto   overflow-y-scroll    md:overflow-hidden md:overflow-x-hidden justify-center  md:px-4 ">
           <thead className=" bg-gray-50">
             <tr className="font-bold  md:text-2xl   border-b-2 border-b-slate-200  md:space-x-1">
               <th className="lg:px-[4rem] ">Tour image</th>

@@ -14,7 +14,7 @@ const TourList = () => {
       <div className="flex flex-col items-start md:w-1/3    py-8   ">
         <div className="  ">
           <img
-            className="bg-cover  w-[44rem] h-[20rem]    "
+            className="bg-cover  w-fit h-[20rem]    "
             src={backdropImage}
             alt={title}
           />
@@ -33,7 +33,7 @@ const TourList = () => {
             live in Bookmarksgrove.
           </p>
           <div className="flex space-x-12">
-            <p className="tour-price text-3xl font-bold">{Price}</p>
+            <p className="tour-price text-3xl font-bold">{Price} $</p>
             <Link to={`/tourDetails/${_id}`}>
               <button className="px-4 py-2 bg-secondary text-white rounded-lg">
                 Book now{" "}
@@ -113,29 +113,32 @@ const TourList = () => {
 
   return (
     <>
-      <div className="  text-center mb-24 md:px-8 py-52 md:p-40">
+      <div className="  text-center mb-10 md:px-8 py-52 md:p-40">
         <div className="bg-image1" />
         <p className="font-bold font-body md:text-7xl text-4xl py-2 px-2 text-white container mx-auto ">
           Tour list
         </p>
       </div>
 
-      <div className="container md:flex-row flex-col flex mx-auto items-center relative">
-        <div className="md:w-2/3 flex justify-evenly flex-col items-center mt-24  ">
-          <div className="mt-28">
-            <form action="" className="flex flex-col  space-y-4 md:flex-row  ">
-              <div className=" border md:rounded-l-lg mr-0 py-2 px-20 md:px-28  border-black">
-                <label htmlFor="" className="font-bold text-center">
+      <div className="container md:flex-row flex-col flex mx-auto   relative">
+        <div className="md:w-2/3 flex justify-evenly px-4 flex-col  md:mt-12 mt-[14rem] ">
+          <div className="mt-0">
+            <form
+              action=""
+              className="flex flex-col md:justify-center  space-y-4 md:flex-row  "
+            >
+              <div className=" border md:rounded-l-lg mr-0 py-2 mt-[1rem] px-20 md:px-16 text-center justify-center  border-black">
+                <label htmlFor="" className="font-bold  h-[19px] ">
                   Sort by:
                 </label>
               </div>
-              <div className=" border md:border-l-0  ml-0 py-2 px-20 border-black">
-                <label htmlFor=""></label>
-                <select name="" id="" className="flex justify-center">
+              <div className=" border md:border-l-0  ml-0 py-2 px-14 justify-center text-center border-black">
+                {/* <label htmlFor=""></label> */}
+                <select name="" id="" className="flex text-center ">
                   <option value="">Release date</option>
                 </select>
               </div>
-              <div className=" border md:rounded-r-lg md:border-l-0 px-20  py-2 md:px-28 border-black">
+              <div className=" border md:rounded-r-lg md:border-l-0 px-20 text-center  py-2 md:px-16 border-black">
                 <select name="" id="">
                   <option value="">Descending</option>
                   <option value="">Ascending</option>
@@ -143,12 +146,13 @@ const TourList = () => {
               </div>
             </form>
           </div>
+
           <TourListMain />
         </div>
         <div className="md:w-1/3 flex-col flex space-y-6 mb-10 mt-24">
-          <div className="flex flex-col p-4 shadow-xl transform translate-y-[-1.5rem]  bg-white  ">
-            <h2 className="font-semibold text-2xl flex justify-center">
-              Find your tour
+          <div className="flex flex-col p-4 shadow-xl md:transform md:translate-y-[-8.5rem]  bg-white  ">
+            <h2 className="font-bold  text-2xl pl-4 flex justify-start ml-8 border-l-4 mb-4 md:mb-0 border-secondary">
+              FIND YOUR TOUR
             </h2>
             <form
               action="/"

@@ -8,10 +8,11 @@ const Login = () => {
   const [passWord, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const navigate = useNavigate();
-  // const [isLoading,setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleLogin = (e) => {
     e.preventDefault();
+    setIsLoading(true);
 
     axios({
       method: "POST",
@@ -25,10 +26,15 @@ const Login = () => {
         console.log(response);
 
         toast.success(response.data.message);
+        setIsLoading(false);
 
         localStorage.setItem("token", response.data.access_token);
         setTimeout(() => {
-          navigate("/dashboard");
+          if (response.data.user.role == "admin") {
+            navigate(`/dashboard`);
+          } else {
+            navigate("/");
+          }
         }, 3000);
       })
       .catch((error) => {
@@ -93,9 +99,9 @@ const Login = () => {
             </div>
             <button
               onClick={handleLogin}
-              className="px-6 bg-secondary text-white py-4 rounded-lg text-xl"
+              className="px-6 bg-secondary font-bold text-white py-4 rounded-lg text-3xl"
             >
-              Login
+              {isLoading ? "Logging in..." : "Log in "}
             </button>
           </div>
         </form>
