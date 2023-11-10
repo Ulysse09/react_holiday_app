@@ -55,7 +55,7 @@ function Nav() {
         </div>
       </div>
       {/* white navbar */}
-      <div className="flex justify-between  items-center  p-4 md:w-[85vw]  transform md:translate-y-[-1.25rem] sticky     bg-white container mx-auto  ">
+      <div className="flex justify-between  items-center  p-4 md:w-[85vw]  transform md:translate-y-[-1.25rem] sticky bg-white     container mx-auto  ">
         <div className="w-1/2">
           <img src={pic} alt="" className="" />
         </div>

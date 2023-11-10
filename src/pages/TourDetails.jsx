@@ -118,7 +118,7 @@ const TourDetails = () => {
       <div className="container mx-auto flex flex-col md:flex-row">
         {/* 2/3 pages */}
         <div className="md:w-2/3 container mt-44 md:mt-4 mb-32  shadow-xl">
-          <div className="md:px-4 md:py-2 md:mr-[4rem] space-y-10 ">
+          <div className="md:px-4 md:py-2 md:mr-[4rem] space-y-10   ">
             <form action="" className="flex justify-center  ">
               <div className=" border-2 border-gray-700 rounded-l-lg mr-0 py-4 md:px-8 bg-secondary px:4 text-white  ">
                 <label htmlFor="" className=" text-center">
@@ -149,7 +149,7 @@ const TourDetails = () => {
             </div>
 
             {/* icons */}
-            <div className="flex flex-col md:flex-row items-center space-y-4 bg-secondary px-4 py-8 justify-evenly   mx-2">
+            <div className="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 bg-secondary px-4 py-8 justify-evenly   mx-2">
               <div className="flex flex-col text-3xl items-center text-white">
                 <AiFillClockCircle />
                 <p className="text-black font-semibold">{duration}</p>

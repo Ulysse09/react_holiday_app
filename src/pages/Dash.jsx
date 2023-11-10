@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -11,6 +11,8 @@ import {
 } from "chart.js";
 import { Bar, Doughnut } from "react-chartjs-2";
 import Statscard from "../components/statsCard";
+import { useState } from "react";
+import axios from "axios";
 
 ChartJS.register(
   CategoryScale,
@@ -23,6 +25,75 @@ ChartJS.register(
 );
 
 const Dash = () => {
+  const [bookings, setBookings] = useState([]);
+  const [tours, setTours] = useState([]);
+  const [users, setUsers] = useState([]);
+
+  const fetchUsers = () => {
+    let token = localStorage.getItem("token");
+
+    axios({
+      method: "GET",
+      url: "https://holiday-planner-4lnj.onrender.com/api/v1/auth/users",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((response) => {
+        console.log(response);
+        setUsers(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error(error.message);
+      });
+  };
+
+  //fetchTours
+  const fetchTours = () => {
+    let token = localStorage.getItem("token");
+    console.log(token, "token");
+
+    axios({
+      method: "GET",
+      url: "https://holiday-planner-4lnj.onrender.com/api/v1/tour/",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((response) => {
+        setTours(response.data);
+        console.log(response);
+        toast.success(response.data.message);
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error(error.message);
+      });
+  };
+
+  // make chart dynamic
+  const fetchChart = () => {
+    axios({
+      method: "GET",
+      url: "https://holiday-planner-4lnj.onrender.com/api/v1/count?year=2023",
+    }).then((response) => {
+      console.log(response.data);
+      setBookings(response.data);
+    });
+
+    console.log(
+      bookings.map((x) => x.count),
+      "bookings"
+    );
+    // chart options
+  };
+
+  useEffect(() => {
+    fetchChart();
+    fetchTours();
+    fetchUsers();
+  }, []);
   const options = {
     responsive: true,
     plugins: {
@@ -56,7 +127,7 @@ const Dash = () => {
     datasets: [
       {
         label: "number of bookings ",
-        data: [20, 42, 54, 23, 45, 23],
+        data: bookings.map((x) => x.count),
         backgroundColor: "rgba(255, 99, 132, 0.5)",
       },
       {
@@ -68,11 +139,11 @@ const Dash = () => {
   };
 
   const data1 = {
-    labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+    labels: bookings.map((x) => x.label),
     datasets: [
       {
         label: "# of Votes",
-        data: [12, 19, 3, 5, 2, 3],
+        data: bookings.map((x) => x.count),
         backgroundColor: [
           "rgba(255, 99, 132, 0.2)",
           "rgba(54, 162, 235, 0.2)",
@@ -101,16 +172,16 @@ const Dash = () => {
           <p className="text-white text-6xl font-bold">3800$</p>
         </div>
          */}
-        <Statscard amount="220" title="Tours" />
-        <Statscard amount="240" title="Booking" />
-        <Statscard amount="2200" title="Users" />
+        <Statscard amount={tours.length} title="Tours" />
+        <Statscard amount={bookings.length} title="Booking" />
+        <Statscard amount={users.length} title="Users" />
       </div>
-      <div className="  md:h-[20rem]  flex md:flex-row flex-col justify-evenly items-center md:p-20">
-        <div className="md:w-1/2 md:p-4">
-          <Bar options={options} data={data} className="   " />;
+      <div className="  md:h-[20rem] w-[80vw]  flex md:flex-row flex-col justify-evenly items-center md:p-20">
+        <div className="md:w-1/2 w-[75vw]      md:p-4">
+          <Bar options={options} data={data} className />;
         </div>
 
-        <div className=" md:p-20  w-1/2  flex">
+        <div className=" md:p-20  md:w-1/2  w-[80vw] h-[75vh]  flex">
           <Doughnut data={data1} className="" />;
         </div>
       </div>

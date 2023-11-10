@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import logo from "../assets/dashboard/logo.svg";
 import kleon from "../assets/logo1.png";
 import { RxDashboard } from "react-icons/rx";
@@ -10,11 +10,16 @@ import { Link, Outlet, useParams } from "react-router-dom";
 import { BsHouseDoor } from "react-icons/bs";
 import { FaBars } from "react-icons/fa";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 const Dashboard = () => {
   const [openDash, setOpen] = useState(false);
   // const [profile, setProfile] = useState("");
   const token = localStorage.getItem("token");
+  const userString = localStorage.getItem("user");
+  const user = JSON.parse(userString);
+
+  const navigate = useNavigate();
 
   const open = () => {
     setOpen(true);
@@ -23,12 +28,22 @@ const Dashboard = () => {
   const close = () => {
     setOpen(false);
   };
+
+  useEffect(() => {
+    console.log(user);
+    console.log(token);
+    if (token && user.role == "user") {
+      navigate("/");
+    } else if (!token) {
+      navigate("/login");
+    }
+  }, []);
   return (
     <>
       <div className="px-4 flex relative ">
         {/* sidebar */}
 
-        <div className="lg:w-1/6  md:w-1/4 container mx-auto hidden  md:flex md:flex-col px-1 shadow-xl shadow-r rounded-xl items-center h-[100vh]">
+        <div className="lg:w-1/6   md:w-1/4 container mx-auto hidden  md:flex md:flex-col px-1 shadow-xl shadow-r rounded-xl items-center">
           <div className=" py-8 flex space-x-6 items-center   justify-evenly">
             <div className="">
               <img src={kleon} alt="" />
@@ -93,7 +108,12 @@ const Dashboard = () => {
 
         {/* main component */}
 
-        <div className="lg:w-5/6 md:w-3/4 flex-col container mx-auto">
+        <div
+          className="lg:w-5/6 md:w-3/4 flex-col  container mx-auto"
+          style={{
+            height: 1000,
+          }}
+        >
           {/* header */}
 
           <div className="md:p-10 p-4 flex justify-between items-center mx-auto">

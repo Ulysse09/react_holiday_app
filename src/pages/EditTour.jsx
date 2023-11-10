@@ -114,18 +114,18 @@ const EditTour = () => {
 
   return (
     <div>
-      <div className="md:pt-[3rem] px-[10rem] bg-slate-100 h-[100vh] ">
+      <div className="md:pt-[3rem] bg-slate-100 md:px-[10rem]   h-[100vh] ">
         <ToastContainer />
-        <div className="md:p-0 rounded-lg bg-slate-100   ">
+        <div className="md:p-0 rounded-lg   ">
           <form
             action="/"
             method="get"
             id="form"
-            class="flex rounded-xl flex-col items-center md:items-start bg-white space-y-4 md:px-[4rem] "
+            class="flex rounded-xl flex-col items-center md:items-start bg-white pb-4  space-y-4 md:px-[1rem] "
           >
             <h2 className="font-bold text-3xl">Edit tour </h2>
 
-            <div className="flex flex-col space-y-8  justify-center  md: container ">
+            <div className="flex flex-col space-y-8    md: container ">
               <div className="flex-col md:flex-row flex justify-between md:space-x-4">
                 <div className="flex flex-col">
                   <label htmlFor="" className="font-semibold">
@@ -209,7 +209,7 @@ const EditTour = () => {
               </div>
 
               <button
-                className="px-6 w-1/2 bg-secondary text-white py-4 rounded-lg text-xl"
+                className="px-6 mb-4 md:w-1/2  bg-secondary text-white py-4 rounded-lg text-xl"
                 onClick={handleForm}
               >
                 <p>Add tour</p>

@@ -58,20 +58,20 @@ const TourForm = () => {
   };
 
   return (
-    <div className="md:p-14 bg-slate-100 h-[100vh] ">
+    <div className="md:p-14 bg-slate-100   ">
       <ToastContainer />
       <div className="md:p-8 rounded-lg flex flex-col items-center md:flex bg-white ">
         <form
           action="/"
           method="get"
           id="form"
-          class="flex flex-col space-y-4 px-[14rem] "
+          class="flex flex-col space-y-4 px-[1rem]  w-[80vw] "
         >
           <h2 className="font-bold  text-2xl text-center md:text-3xl">
             Tour Form
           </h2>
 
-          <div className="flex flex-col items-center md:items-start space-y-8 justify-center  md: container ">
+          <div className="flex flex-col items-center md:items-center space-y-8  md:justify-center  md:container ">
             <div className="md:flex-row md:flex flex-col items-center  flex justify-between md:space-x-4">
               <div className="flex flex-col ">
                 <label htmlFor="" className="font-semibold">
@@ -163,6 +163,127 @@ const TourForm = () => {
                   value={price}
                   onChange={(e) => {
                     setPrice(e.target.value);
+                  }}
+                  type="text"
+                  id="name1"
+                  class="border-2 hover:border-2 border-grey-500 focus:border-secondary hover:border-secondary rounded-lg py-4 px-24 text-black "
+                  placeholder="Enter your Price "
+                />
+              </div>
+            </div>
+
+            <div className="md:flex-row md:flex flex flex-col items-center justify-between md:space-x-4">
+              <div className="flex flex-col">
+                <label htmlFor="" className="font-semibold">
+                  Discount
+                </label>
+                <input
+                  onChange={(e) => setDiscount(e.target.value)}
+                  type="text"
+                  id="email"
+                  class="border-2 hover:border-2 border-grey-500 hover:border-secondary  rounded-lg py-4 px-10 md:px-24 text-black"
+                  placeholder="Enter Discount"
+                />
+              </div>
+
+              <div className="flex flex-col">
+                <label htmlFor="" className="font-semibold">
+                  Tour type
+                </label>
+                <input
+                  onChange={(e) => {
+                    setTourType(e.target.value);
+                  }}
+                  type="text"
+                  id="name1"
+                  class="border-2 hover:border-2 border-grey-500 focus:border-secondary hover:border-secondary rounded-lg py-4 px-24 text-black "
+                  placeholder="Enter Tour type "
+                />
+              </div>
+            </div>
+
+            <div className="md:flex-row md:flex flex flex-col items-center justify-between md:space-x-4">
+              <div className="flex flex-col">
+                <label htmlFor="" className="font-semibold">
+                  Departure
+                </label>
+                <input
+                  onChange={(e) => setDeparture(e.target.value)}
+                  type="text"
+                  id="email"
+                  class="border-2 hover:border-2 border-grey-500 hover:border-secondary  rounded-lg py-4 px-10 md:px-24 text-black"
+                  placeholder="Enter your image"
+                />
+              </div>
+
+              <div className="flex flex-col">
+                <label htmlFor="" className="font-semibold">
+                  Seats
+                </label>
+                <input
+                  value={price}
+                  onChange={(e) => {
+                    setSeats(e.target.value);
+                  }}
+                  type="text"
+                  id="name1"
+                  class="border-2 hover:border-2 border-grey-500 focus:border-secondary hover:border-secondary rounded-lg py-4 px-24 text-black "
+                  placeholder="Enter seat number "
+                />
+              </div>
+            </div>
+
+            <div className="md:flex-row md:flex flex flex-col items-center justify-between md:space-x-4">
+              <div className="flex flex-col">
+                <label htmlFor="" className="font-semibold">
+                  from Month
+                </label>
+                <input
+                  onChange={(e) => setFromMonth(e.target.value)}
+                  type="text"
+                  id="email"
+                  class="border-2 hover:border-2 border-grey-500 hover:border-secondary  rounded-lg py-4 px-10 md:px-24 text-black"
+                  placeholder="Enter your from  month"
+                />
+              </div>
+
+              <div className="flex flex-col">
+                <label htmlFor="" className="font-semibold">
+                  to month
+                </label>
+                <input
+                  onChange={(e) => {
+                    setToMonth(e.target.value);
+                  }}
+                  type="text"
+                  id="name1"
+                  class="border-2 hover:border-2 border-grey-500 focus:border-secondary hover:border-secondary rounded-lg py-4 px-24 text-black "
+                  placeholder="Enter  to month "
+                />
+              </div>
+            </div>
+
+            <div className="md:flex-row md:flex flex flex-col items-center justify-between md:space-x-4">
+              <div className="flex flex-col">
+                <label htmlFor="" className="font-semibold">
+                  Departure time
+                </label>
+                <input
+                  onChange={(e) => setFromMonth(e.target.value)}
+                  type="text"
+                  id="email"
+                  class="border-2 hover:border-2 border-grey-500 hover:border-secondary  rounded-lg py-4 px-10 md:px-24 text-black"
+                  placeholder="Enter your time"
+                />
+              </div>
+
+              <div className="flex flex-col">
+                <label htmlFor="" className="font-semibold">
+                  Return time
+                </label>
+                <input
+                  onChange={(e) => {
+                    setToMonth(e.target.value);
                   }}
                   type="text"
                   id="name1"

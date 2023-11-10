@@ -3,6 +3,7 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 // import Form from "../components/Form";
 import { useNavigate } from "react-router-dom";
+import { ThreeDots } from "react-loader-spinner";
 
 const Sign_up = () => {
   const [firstName, setFirstName] = useState("");
@@ -46,6 +47,7 @@ const Sign_up = () => {
       })
       .catch((error) => {
         toast.error("Error");
+        setIsLoading(false);
       });
 
     setEmail("");
@@ -142,7 +144,19 @@ const Sign_up = () => {
               onClick={handleSubmit}
               className="px-6 bg-secondary text-white py-4 rounded-lg text-3xl font-bold hover:bg-black hover:text-white"
             >
-              {isLoading ? "Signing up..." : "Sign up "}
+              {isLoading ? (
+                <ThreeDots
+                  height="80"
+                  width="80"
+                  radius="9"
+                  color="white"
+                  ariaLabel="three-dots-loading"
+                  wrapperStyle
+                  wrapperClass="flex justify-center"
+                />
+              ) : (
+                "Sign up "
+              )}
             </button>
           </div>
         </form>

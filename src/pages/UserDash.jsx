@@ -10,12 +10,71 @@ import { useNavigate } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import { Link } from "react-router-dom";
 
+import ReactPaginate from "react-paginate";
+import { Circles } from "react-loader-spinner";
+
 const UserDash = () => {
   const navigate = useNavigate();
   const [user, setUsers] = useState([]);
 
+  //spinners
+
+  const [isLoading, setIsLoading] = useState(false);
+
+  //paginate
+
+  const [userPageNumber, setUserPageNumber] = useState(0);
+  const userPerPage = 5;
+  const usersVisited = userPageNumber * userPerPage;
+  const userCount = Math.ceil(user.length) / userPerPage;
+  const userDisplay = user
+    .slice(usersVisited, usersVisited + userPerPage)
+    .map((item) => {
+      return (
+        <tr className="text-2xl border-b-2    border-b-slate-200    ">
+          <td className="lg:px-[0.5rem] w-[10rem] break-words   text-center  ">
+            {item.email}
+          </td>
+          <td className="lg:px-[0rem] px-[0rem]   text-center  ">
+            {item.fullName}
+          </td>
+          <td className="md:px-[0.5rem] text-center  md:py-[1.5rem]">
+            {item.role}
+          </td>
+
+          <td className="md:px-[0rem] text-center">
+            <span className="flex space-x-4 md:pl-8">
+              <button
+                onClick={() => {
+                  navigate(`/dashboard/editUser/${item._id}`);
+                }}
+              >
+                <BsPencilFill />
+              </button>
+
+              <button>
+                <BsTrashFill
+                  className="text-red-500"
+                  onClick={() => {
+                    handleDelete(item._id);
+                  }}
+                />
+              </button>
+            </span>
+          </td>
+        </tr>
+      );
+    });
+
+  const userPage = ({ selected }) => {
+    setUserPageNumber(selected);
+  };
+
+  //fetchUsers
+
   const fetchUsers = () => {
     let token = localStorage.getItem("token");
+    setIsLoading(true);
 
     axios({
       method: "GET",
@@ -26,7 +85,9 @@ const UserDash = () => {
     })
       .then((response) => {
         console.log(response);
+        console.log(response.data.userDetails);
         setUsers(response.data);
+        setIsLoading(false);
       })
       .catch((error) => {
         console.log(error);
@@ -34,6 +95,7 @@ const UserDash = () => {
       });
   };
 
+  //delete button
   const handleDelete = (id) => {
     if (window.confirm("Are you sure you want to delete?")) {
       let token = localStorage.getItem("token");
@@ -62,59 +124,48 @@ const UserDash = () => {
   return (
     <>
       <ToastContainer />
-      <div className="bg-grey-300 flex flex-col items-center">
-        <div className="md:px-[5rem] overflow-x-auto w-[80vw] h-[75vh]  ">
-          <table className="shadow-2xl table-fixed      rounded-xl  items-center  mx-auto   overflow-y-scroll    md:overflow-hidden md:overflow-x-hidden justify-center  md:px-4  ">
-            <thead className=" bg-gray-100">
-              <tr className="font-bold  md:text-2xl   border-b-2 border-b-slate-200   ">
-                <th className="px-5 w-[20rem] ">Email</th>
-                <th className=" lg:py-[0rem]   ">Names</th>
-                <th className="lg:px-[0.5rem]     ">Role</th>
+      {isLoading ? (
+        <Circles
+          height="90vh"
+          width="80"
+          color="#c29d59"
+          ariaLabel="circles-loading"
+          wrapperStyle={{}}
+          wrapperClass="flex items-center justify-center"
+          visible={true}
+        />
+      ) : (
+        <div className="bg-grey-300 flex flex-col items-center">
+          <div className="md:px-[0rem]  w-[80vw] mb-4  overflow-x-auto  ">
+            <table className="shadow-2xl md:table-fixed   w-[75vw]    rounded-xl  items-center  mx-auto   overflow-y-scroll    md:overflow-hidden md:overflow-x-hidden justify-center  md:px-4  ">
+              <thead className=" bg-gray-100">
+                <tr className="font-bold  md:text-2xl   border-b-2 border-b-slate-200   ">
+                  <th className="px-5 w-[20rem] ">Email</th>
+                  <th className=" lg:py-[0rem]   ">Names</th>
+                  <th className="lg:px-[0.5rem]     ">Role</th>
 
-                <th className="md:px-[0.5rem]  lg:py-[1.5rem]">Actions</th>
-              </tr>
-            </thead>
-            <tbody className=" ">
-              {user.map((item) => {
-                return (
-                  <tr className="text-2xl border-b-2    border-b-slate-200    ">
-                    <td className="lg:px-[0.5rem] w-[10rem] break-words whitespace-nowrap  text-center  ">
-                      {item.email}
-                    </td>
-                    <td className="lg:px-[0rem] px-[0rem]   text-center  ">
-                      {item.fullName}
-                    </td>
-                    <td className="md:px-[0.5rem] text-center  md:py-[1.5rem]">
-                      {item.role}
-                    </td>
+                  <th className="md:px-[0rem]    lg:py-[1.5rem]">Actions</th>
+                </tr>
+              </thead>
+              <tbody className=" ">{userDisplay}</tbody>
+            </table>
+          </div>
 
-                    <td className="md:px-[0.5rem] text-center">
-                      <span className="flex space-x-4 md:px-4">
-                        <button
-                          onClick={() => {
-                            navigate(`/dashboard/editUser/${item._id}`);
-                          }}
-                        >
-                          <BsPencilFill />
-                        </button>
-
-                        <button>
-                          <BsTrashFill
-                            className="text-red-500"
-                            onClick={() => {
-                              handleDelete(item._id);
-                            }}
-                          />
-                        </button>
-                      </span>
-                    </td>
-                  </tr>
-                );
-              })}{" "}
-            </tbody>
-          </table>
+          <ReactPaginate
+            previousLabel={"prev"}
+            nextLabel={"next"}
+            pageCount={userCount}
+            onPageChange={userPage}
+            containerClassName="flex  justify-center   flex-row space-x-4 items-center mt-4  "
+            pageClassName="bg-secondary text-white rounded-lg md:p-4 "
+            pageLinkClassName="bg-secondary text-white rounded-lg md:p-3 p-[0.2rem]"
+            previousLinkClassName="bg-secondary text-white rounded-lg md:p-4"
+            nextLinkClassName="bg-secondary text-white rounded-lg md:p-4"
+            disabledClassName=""
+            activeClassName=""
+          />
         </div>
-      </div>
+      )}
     </>
   );
 };

@@ -22,14 +22,14 @@ function App() {
   return (
     <>
       <div className="   text-center md:mb-16 mb-[10rem] px-8 py-52 md:p-36">
-        <div className="bg-image" />
+        <div className="bg-image  " />
         <p className="font-bold font-body min-w-xl md:text-7xl text-4xl py-2 px-2 text-white container mx-auto ">
           Enjoy the travel with
           <span className="py-0"> holiday partners</span>
         </p>
       </div>
 
-      <div className="md:container md:mx-auto md:px-10 md:space-y-[5rem] px-[0.5rem]    ">
+      <div className="md:container bg-white md:mx-auto md:px-10 md:space-y-[5rem]  px-[0.5rem]    ">
         {/* <div className="flex justify-center  bg-white   mt-[6rem]">
           <form action="" className="flex ">
             <div className=" border rounded-l-lg mr-0 py-2 px-28  border-black">
@@ -62,11 +62,11 @@ function App() {
               </div>
               <p className="font-body text-4xl text-white">Customer reviews</p>
             </div>
-            <div className="w-4/5 ">
+            <div className="w-4/5 hidden md:block">
               <img
                 src={colon}
                 alt=""
-                className="   border-white border bg-white      pl-[24rem] md:pb-[10.2rem]      md:pt-[9rem] md:pl-[15rem]"
+                className="   border-white border bg-white    pl-[24rem] md:pb-[10.2rem]      md:pt-[9rem] md:pl-[15rem]"
                 srcset=""
               />
             </div>

@@ -15,7 +15,7 @@ const Contact = () => {
             id="form"
             class="flex flex-col space-y-4 md:p-8"
           >
-            <div className="md:flex-row flex flex-col   md:space-x-4">
+            <div className="md:flex-row flex flex-col space-y-2 md:space-y-0  md:space-x-4">
               <input
                 type="text"
                 id="name1"
@@ -31,7 +31,7 @@ const Contact = () => {
               />
             </div>
 
-            <div className="md:space-x-4 md:flex-row   flex flex-col">
+            <div className="md:space-x-4 md:flex-row space-y-2 md:space-y-0   flex flex-col">
               <input
                 type="text"
                 id="name1"
@@ -67,7 +67,7 @@ const Contact = () => {
           </form>
         </div>
 
-        <div className="md:w-1/4 flex-col flex space-y-8">
+        <div className="md:w-1/4 flex-col flex space-y-8 mb-[5rem]">
           <div className="bg-tertiary  px-[2rem] py-[2rem] space-y-3 flex flex-col items-start text-center   ">
             <h2 className="font-bold  px-1 border-l-4 border-l-secondary text-xl mb-6">
               WHY BOOK WITH US?
@@ -98,7 +98,7 @@ const Contact = () => {
             </p>
           </div>
 
-          <div className="bg-secondary bg-idea p-8     px-[2rem] space-y-2 flex flex-col items-start text-center text-white   ">
+          <div className="bg-secondary bg-idea p-8    px-[2rem] space-y-2 flex flex-col items-start text-center text-white   ">
             <h2 className="font-semibold text-2xl border-l-4 border-l-black px-1 text-white">
               Got a question
             </h2>

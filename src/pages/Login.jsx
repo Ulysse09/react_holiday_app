@@ -3,6 +3,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
+import { Audio, ThreeDots } from "react-loader-spinner";
 
 const Login = () => {
   const [passWord, setPassword] = useState("");
@@ -28,9 +29,16 @@ const Login = () => {
         toast.success(response.data.message);
         setIsLoading(false);
 
+        localStorage.setItem("user", JSON.stringify(response.data.user));
+        console.log(
+          localStorage.setItem("user", JSON.stringify(response.data.user))
+        );
+
         localStorage.setItem("token", response.data.access_token);
+        const token = localStorage.getItem("token");
         setTimeout(() => {
           if (response.data.user.role == "admin") {
+            console.log(token);
             navigate(`/dashboard`);
           } else {
             navigate("/");
@@ -41,6 +49,7 @@ const Login = () => {
         console.log(error);
 
         toast.error(error.message);
+        setIsLoading(false);
       });
 
     setEmail("");
@@ -86,10 +95,10 @@ const Login = () => {
                 onChange={(e) => {
                   setPassword(e.target.value);
                 }}
-                type="email"
+                type="password"
                 id="email"
                 class="border-2  border-black rounded-lg p-4 text-black"
-                placeholder="Enter your email"
+                placeholder="Enter your password"
               />
             </div>
 
@@ -101,7 +110,19 @@ const Login = () => {
               onClick={handleLogin}
               className="px-6 bg-secondary font-bold hover:bg-black text-white py-4 rounded-lg text-3xl"
             >
-              {isLoading ? "Logging in..." : "Log in "}
+              {isLoading ? (
+                <ThreeDots
+                  height="80"
+                  width="80"
+                  radius="9"
+                  color="white"
+                  ariaLabel="three-dots-loading"
+                  wrapperStyle
+                  wrapperClass="flex justify-center"
+                />
+              ) : (
+                "Log in "
+              )}
             </button>
           </div>
         </form>
